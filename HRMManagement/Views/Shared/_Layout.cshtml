@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - HRMManagement</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="header d-flex justify-content-between align-items-center">
+        <div class="col-3 logo d-flex justify-content-left align-items-center pointer-event">
+            <a href="#" class="underline-none">
+                <img alt="Logo" src="~/assets/images/logo.png" />
+                <span class="text-white m-lg-1">SunShine</span>
+            </a>
+        </div>
+
+        <div class="col-9 d-flex justify-content-between align-items-center gap-1">
+            <nav class="navbar navbar-expand-lg m-lg-auto">
+                <div class="container-fluid">
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 transition">
+                            <li class="nav-item dropdown pointer-event">
+                                <a class="nav-link dropdown-toggle text-hover text-white"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Sản phẩm
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown pointer-event">
+                                <a class="nav-link dropdown-toggle text-hover text-white"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Giải pháp
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
+                                    <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-hover" href="#"><span>Khách hàng</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white text-hover" href="#"><span>Công ty</span></a>
+                            </li>
+                            <li class="nav-item dropdown pointer-event">
+                                <a class="nav-link dropdown-toggle text-hover text-white"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Tài nguyên
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item text-paragraph" href="#"><span>Tài nguyên</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-paragraph" href="#"><span>Tin tức</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-paragraph" href="#"><span>Khách hàng</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-paragraph" href="#"><span>Webinar & videos</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="d-flex gap-1 w-auto h-auto">
+                <button class="btn-transparent text-hover">Đăng nhập</button>
+                <button class="btn-small-rounded btn-hover">Đăng ký</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="w-100 h-auto">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - HRMManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
