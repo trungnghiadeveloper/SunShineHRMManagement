@@ -3,102 +3,106 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg" href="~/assets/images/logo.png" />
     <title>@ViewData["Title"] - HRMManagement</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/font.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 </head>
 <body>
-    <header class="header d-flex justify-content-between align-items-center">
-        <div class="col-3 logo d-flex justify-content-left align-items-center pointer-event">
-            <a href="#" class="underline-none">
-                <img alt="Logo" src="~/assets/images/logo.png" />
-                <span class="text-white m-lg-1">SunShine</span>
-            </a>
-        </div>
+    <header class="w-100 header">
+        <div class="app-width flexBetween w-100 h-100" style="padding: 0 60px;">
+            <div class="col-3 logo">
+                <a href="#" class="d-flex justify-content-left align-items-center pointer-event underline-none">
+                    <img alt="Logo" src="~/assets/images/logo.png" />
+                    <span class="text-white m-lg-1">SunShine</span>
+                </a>
+            </div>
 
-        <div class="col-9 d-flex justify-content-between align-items-center gap-1">
-            <nav class="navbar navbar-expand-lg m-lg-auto">
-                <div class="container-fluid">
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 transition">
-                            <li class="nav-item dropdown pointer-event">
-                                <a class="nav-link dropdown-toggle text-hover text-white"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Sản phẩm
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown pointer-event">
-                                <a class="nav-link dropdown-toggle text-hover text-white"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Giải pháp
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
-                                    <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-hover" href="#"><span>Khách hàng</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white text-hover" href="#"><span>Công ty</span></a>
-                            </li>
-                            <li class="nav-item dropdown pointer-event">
-                                <a class="nav-link dropdown-toggle text-hover text-white"
-                                   href="#"
-                                   role="button"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Tài nguyên
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item text-paragraph" href="#"><span>Tài nguyên</span></a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-paragraph" href="#"><span>Tin tức</span></a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-paragraph" href="#"><span>Khách hàng</span></a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-paragraph" href="#"><span>Webinar & videos</span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+            <div class="col-9 d-flex justify-content-between align-items-center gap-1">
+                <nav class="navbar navbar-expand-lg m-lg-auto">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse text-white" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 transition">
+                                <li class="nav-item dropdown pointer-event" style="padding: 0 10px">
+                                    <a class="nav-link dropdown-toggle text-hover text-white"
+                                       href="#"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Sản phẩm
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown pointer-event" style="padding: 0 10px">
+                                    <a class="nav-link dropdown-toggle text-hover text-white"
+                                       href="#"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Giải pháp
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item text-paragraph" href="#">Tài nguyên</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Tin tức</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Khách hàng</a></li>
+                                        <li><a class="dropdown-item text-paragraph" href="#">Webinar & videos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item" style="padding: 0 10px">
+                                    <a class="nav-link text-white text-hover" href="#"><span>Khách hàng</span></a>
+                                </li>
+                                <li class="nav-item" style="padding: 0 10px">
+                                    <a class="nav-link text-white text-hover" href="#"><span>Công ty</span></a>
+                                </li>
+                                <li class="nav-item dropdown pointer-event" style="padding: 0 10px">
+                                    <a class="nav-link dropdown-toggle text-hover text-white"
+                                       href="#"
+                                       role="button"
+                                       data-bs-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Tài nguyên
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item text-paragraph" href="#"><span>Tài nguyên</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-paragraph" href="#"><span>Tin tức</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-paragraph" href="#"><span>Khách hàng</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item text-paragraph" href="#"><span>Webinar & videos</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
 
-            <div class="d-flex gap-1 w-auto h-auto">
-                <button class="btn-transparent text-hover">Đăng nhập</button>
-                <button class="btn-small-rounded btn-hover">Đăng ký</button>
+                <div class="d-flex gap-1 w-auto h-auto">
+                    <button class="btn-transparent text-hover">Đăng nhập</button>
+                    <button class="btn-small-rounded btn-hover">Đăng ký</button>
+                </div>
             </div>
         </div>
     </header>
