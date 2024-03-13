@@ -26,6 +26,15 @@ body {
     font-family: "Inter", sans-serif;
 }
 
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
 .title1 {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
@@ -112,13 +121,15 @@ body {
     transition: all .3s ease-in-out;
 }
 
-.btn-transparent .btn-outline {
-    border: 1px solid #ccc !important;
+.btn-transparent.btn-outline {
+    border: 1px solid #ccc;
     color: white;
     font-weight: 600;
+    width: 170px;
+    height: 46px;
 }
 
-.btn-transparent-outline:hover {
+.btn-transparent.btn-outline:hover {
     border: 1px solid var(--system-primary-color);
     color: var(--system-primary-color);
 }
