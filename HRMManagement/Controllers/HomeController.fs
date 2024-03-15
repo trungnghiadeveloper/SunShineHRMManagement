@@ -14,7 +14,7 @@ open HRMManagement.Models
 type HomeController (logger : ILogger<HomeController>) =
     inherit Controller()
 
-    member this.Index () =
+    member this.infor () =
         this.View()
 
     [<ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)>]
