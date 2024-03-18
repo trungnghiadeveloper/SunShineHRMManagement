@@ -1,0 +1,114 @@
+﻿@page
+@model HRMManagement.Views.Employee.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].HoDem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].NgaySinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].GioiTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].CCCD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].SDT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].QueQuan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].NgayTuyenDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].AnhProfile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDViTri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDChucVu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDPhongBan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.EmployeesViewModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoDem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioiTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CCCD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QueQuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTuyenDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnhProfile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDViTri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDChucVu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDPhongBan)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
