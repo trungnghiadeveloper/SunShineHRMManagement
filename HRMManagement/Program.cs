@@ -1,7 +1,17 @@
+using HRMManagement.DI;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+// Add services to the container
+builder.Services.AddDbContext<HRMDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllersWithViews(); //
+
+// Add authorization services
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -29,6 +39,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Add authorization middleware
 app.UseAuthorization();
 
 app.MapControllerRoute(
