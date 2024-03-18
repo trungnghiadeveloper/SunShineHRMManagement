@@ -65,7 +65,7 @@ public class EmployeeController : Controller
     ////Display a single Emp
     //public IActionResult Display(String id)
     //{
-    //    var Emp = _productRepository.GetById(id);
+    //    var Emp = .GetById(id);
     //    if (Emp == null)
     //    {
     //        return NotFound();

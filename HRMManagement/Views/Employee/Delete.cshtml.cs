@@ -5,55 +5,55 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using HRMManagement.Data;
+using HRMManagement.DI;
 using HRMManagement.Models;
 
 namespace HRMManagement.Views.Employee
 {
     public class DeleteModel : PageModel
     {
-        private readonly HRMManagement.Data.HRMManagementContext _context;
+        private readonly HRMManagement.DI.HRMDBContext _context;
 
-        public DeleteModel(HRMManagement.Data.HRMManagementContext context)
+        public DeleteModel(HRMManagement.DI.HRMDBContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-      public EmployeesViewModel EmployeesViewModel { get; set; } = default!;
+      public Nhanvien Nhanvien { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null || _context.EmployeesViewModel == null)
+            if (id == null || _context.Nhanviens == null)
             {
                 return NotFound();
             }
 
-            var employeesviewmodel = await _context.EmployeesViewModel.FirstOrDefaultAsync(m => m.ID == id);
+            var nhanvien = await _context.Nhanviens.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (employeesviewmodel == null)
+            if (nhanvien == null)
             {
                 return NotFound();
             }
             else 
             {
-                EmployeesViewModel = employeesviewmodel;
+                Nhanvien = nhanvien;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string id)
         {
-            if (id == null || _context.EmployeesViewModel == null)
+            if (id == null || _context.Nhanviens == null)
             {
                 return NotFound();
             }
-            var employeesviewmodel = await _context.EmployeesViewModel.FindAsync(id);
+            var nhanvien = await _context.Nhanviens.FindAsync(id);
 
-            if (employeesviewmodel != null)
+            if (nhanvien != null)
             {
-                EmployeesViewModel = employeesviewmodel;
-                _context.EmployeesViewModel.Remove(EmployeesViewModel);
+                Nhanvien = nhanvien;
+                _context.Nhanviens.Remove(Nhanvien);
                 await _context.SaveChangesAsync();
             }
 

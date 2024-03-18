@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace QuanLyNhanVienMau.Views.Employee
+namespace HRMManagement.Views.Shared
 {
-    public class DanhSachNhanVienModel : PageModel
+    public class _MainLayoutModel : PageModel
     {
         public void OnGet()
         {

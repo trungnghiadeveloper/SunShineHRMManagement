@@ -14,52 +14,52 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].HoDem)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].HoDem)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].Ten)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].Ten)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].NgaySinh)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].NgaySinh)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].GioiTinh)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].GioiTinh)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].CCCD)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].Cccd)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].DiaChi)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].DiaChi)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].SDT)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].Sdt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].Email)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].QueQuan)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].QueQuan)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].NgayTuyenDung)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].NgayTuyenDung)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].AnhProfile)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].AnhProfile)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDViTri)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].IdchucVuNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDChucVu)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].IdphongBanNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeesViewModel[0].IDPhongBan)
+                @Html.DisplayNameFor(model => model.Nhanvien[0].IdviTriNavigation)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.EmployeesViewModel) {
+@foreach (var item in Model.Nhanvien) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.HoDem)
@@ -74,13 +74,13 @@
                 @Html.DisplayFor(modelItem => item.GioiTinh)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CCCD)
+                @Html.DisplayFor(modelItem => item.Cccd)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SDT)
+                @Html.DisplayFor(modelItem => item.Sdt)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -95,18 +95,18 @@
                 @Html.DisplayFor(modelItem => item.AnhProfile)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDViTri)
+                @Html.DisplayFor(modelItem => item.IdchucVuNavigation.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDChucVu)
+                @Html.DisplayFor(modelItem => item.IdphongBanNavigation.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDPhongBan)
+                @Html.DisplayFor(modelItem => item.IdviTriNavigation.Id)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

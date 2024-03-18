@@ -6,36 +6,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HRMManagement.Data;
+using HRMManagement.DI;
 using HRMManagement.Models;
 
 namespace HRMManagement.Views.Employee
 {
     public class EditModel : PageModel
     {
-        private readonly HRMManagement.Data.HRMManagementContext _context;
+        private readonly HRMManagement.DI.HRMDBContext _context;
 
-        public EditModel(HRMManagement.Data.HRMManagementContext context)
+        public EditModel(HRMManagement.DI.HRMDBContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public EmployeesViewModel EmployeesViewModel { get; set; } = default!;
+        public Nhanvien Nhanvien { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
-            if (id == null || _context.EmployeesViewModel == null)
+            if (id == null || _context.Nhanviens == null)
             {
                 return NotFound();
             }
 
-            var employeesviewmodel =  await _context.EmployeesViewModel.FirstOrDefaultAsync(m => m.ID == id);
-            if (employeesviewmodel == null)
+            var nhanvien =  await _context.Nhanviens.FirstOrDefaultAsync(m => m.Id == id);
+            if (nhanvien == null)
             {
                 return NotFound();
             }
-            EmployeesViewModel = employeesviewmodel;
+            Nhanvien = nhanvien;
+           ViewData["IdchucVu"] = new SelectList(_context.Chucvus, "Id", "Id");
+           ViewData["IdphongBan"] = new SelectList(_context.Phongbans, "Id", "Id");
+           ViewData["IdviTri"] = new SelectList(_context.Vitricvs, "Id", "Id");
             return Page();
         }
 
@@ -48,7 +51,7 @@ namespace HRMManagement.Views.Employee
                 return Page();
             }
 
-            _context.Attach(EmployeesViewModel).State = EntityState.Modified;
+            _context.Attach(Nhanvien).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +59,7 @@ namespace HRMManagement.Views.Employee
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeesViewModelExists(EmployeesViewModel.ID))
+                if (!NhanvienExists(Nhanvien.Id))
                 {
                     return NotFound();
                 }
@@ -69,9 +72,9 @@ namespace HRMManagement.Views.Employee
             return RedirectToPage("./Index");
         }
 
-        private bool EmployeesViewModelExists(string id)
+        private bool NhanvienExists(string id)
         {
-          return (_context.EmployeesViewModel?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Nhanviens?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
