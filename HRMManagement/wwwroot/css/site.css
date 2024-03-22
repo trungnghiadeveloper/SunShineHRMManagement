@@ -5,7 +5,7 @@
     /* Color */
     --body-color: #fff;
     --primary-color: #fff;
-    --sidebar-dask-color: #F8F8F8;
+    --my-left-sidebar-dask-color: #F8F8F8;
     --primary-color: #fff;
     --toggle-color: #ddd;
     --text-color: #4d4d4d;
@@ -30,54 +30,67 @@ body {
     height: 100vh;
     min-height: 100vh;
     width: 100%;
-    overflow-y: hidden;
 }
 
-/* Navbar */
-.navbar {
+/* my-navbar */
+
+.my-navbar {
     display: flex;
+    position: fixed;
     height: 50px;
     top: 0;
-    background-color: #ffffff80;
-    margin-left: 270px;
+    right: 0;
+    width: calc(100vw - 265px);
+    z-index: 1000;
+    background-color: #ffffff80; /* Semi-transparent white */
     padding-left: 10px;
     justify-content: space-between;
     align-items: center;
 }
 
-    .navbar .nav-left {
-        display: flex;
-        align-items: center;
-        height: 30px;
-        width: 30vh;
-        margin-left: 40px;
-        padding: 5px;
-        background-color: var(--body-color);
-        border-radius: 50px;
+.my-navbar-left {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    width: 30vh;
+    margin-left: 40px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+    .my-navbar-left:is(:hover) .search-input,
+    .my-navbar-left .search-input:focus {
+        width: 50vh;
+        transition: var(--tran-05);
     }
 
-        .navbar .nav-left .search-input {
-            border: none;
-            outline: none;
-            background: transparent;
-            font-size: 14px;
-            align-content: center;
-        }
-
-    .navbar .nav-right a {
-        margin-left: 10px;
-        text-decoration: none;
-        color: black; /* Đổi màu chữ nếu cần */
+    .my-navbar-left .search-input {
+        width: 40vh;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        align-content: center;
+        color: var(--text-color);
     }
 
-/* Sidebar */
-.sidebar {
+.my-navbar .my-navbar-right a {
+    padding-right: 20px;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+/* my-left-sidebar- */
+.my-left-sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 270px;
-    background: var(--body-color);
+    background: var(--primary-color);
     border-radius: 0 5px 5px 0;
     padding: 10px 5px 5px 0;
     margin-right: 5px;
@@ -87,6 +100,7 @@ body {
 
 ::-webkit-scrollbar {
     width: 5px;
+    height:5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -94,12 +108,12 @@ body {
     border-radius: 10px;
 }
 
-.sidebar header {
+.my-left-sidebar header {
     position: relative;
 }
 
-.sidebar .profile-detail,
-.sidebar .profile-detail .profile-content {
+.my-left-sidebar .profile-detail,
+.my-left-sidebar .profile-detail .profile-content {
     color: #000000;
     display: flex;
     height: 50px;
@@ -113,7 +127,7 @@ body {
 
 
 
-/* .sidebar header .profile-detail .toggle {
+/* .my-left-sidebar header .profile-detail .toggle {
     color: #fff;
     font-size: 22px;
     position: absolute;
@@ -137,7 +151,7 @@ body {
     margin: 10px;
 }
 
-.sidebar .profile-detail .profile-text .job {
+.my-left-sidebar .profile-detail .profile-text .job {
     font-size: 16px;
     font-weight: 400;
     color: #A4A4A4;
@@ -155,7 +169,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--sidebar-dask-color);
+    background-color: var(--my-left-sidebar-dask-color);
     padding: 10px 35px 10px 15px;
     margin: 0 5px 10px 0;
     box-sizing: border-box;
@@ -179,25 +193,28 @@ body {
         filter: contrast(50%);
     }
 
-/* SCROLLBOX */
+/* my-scrollbox */
 
-.scrollbox {
+.my-scrollbox {
     overflow: auto;
     visibility: hidden;
     padding: 0;
 }
 
-    .scrollbox-inner,
-    .scrollbox:hover {
+    .my-scrollbox-inner,
+    .my-scrollbox:is(:hover) {
         visibility: visible;
     }
 
-.scrollbox-inner {
+.my-scrollbox-inner {
     font-size: 16px;
 }
 
+.my-left-sidebar .my-scrollbox .my-scrollbox-inner .my-nav-list {
+    padding: 0;
+}
 
-    .sidebar .scrollbox .scrollbox-inner .nav_list .side-title {
+    .my-left-sidebar .my-scrollbox .my-scrollbox-inner .my-nav-list .side-title {
         color: black;
         font-size: 18px;
         font-weight: 500;
@@ -205,11 +222,11 @@ body {
         font-weight: 500;
     }
 
-.sidebar ul {
+.my-left-sidebar ul {
     margin-top: 20px;
 }
 
-    .sidebar ul .task-name {
+    .my-left-sidebar ul .task-name {
         /* background-color: #695cfe; */
         position: relative;
         height: 40px;
@@ -219,7 +236,7 @@ body {
         line-height: 50px;
     }
 
-.sidebar .task-name a {
+.my-left-sidebar .task-name a {
     color: var(--text-color);
     font-size: 16px;
     font-weight: 450;
@@ -230,7 +247,7 @@ body {
     text-decoration: none;
 }
 
-    .sidebar .task-name a .links-name {
+    .my-left-sidebar .task-name a .links-name {
         color: var(--text-color);
         font-weight: 400;
         font-size: 14px;
@@ -247,19 +264,19 @@ body {
     transition: var(--tran-03);
 }
 
-.sidebar ul .task-name:hover .vertical-bar,
-.sidebar ul .task-name.clicked .vertical-bar {
+.my-left-sidebar ul .task-name:is(:hover) .vertical-bar,
+.my-left-sidebar ul .task-name.clicked .vertical-bar {
     display: block;
     height: 100%;
 }
 
-.sidebar ul .task-name.clicked .vertical-bar {
+.my-left-sidebar ul .task-name.clicked .vertical-bar {
     background-color: var(--task-name-clicked-color);
 }
 
 
 /* Icons */
-.sidebar .task-name a span {
+.my-left-sidebar .task-name a span {
     align-items: center;
 }
 
@@ -273,33 +290,64 @@ body {
     padding: 3px;
 }
 
-/* main-content */
-.main-content {
-    margin:50px 10px 10px 290px;
-    width: 100vh;
-    height: 100vh;
+/* main */
+main {
+    top: -50px;
+    right: 0;
+    bottom: 0;
+    margin-left: 270px;
+    width: calc(100vw - 275px); /* trừ đi chiều rộng của sidebar và một chút margin */
+    height: calc(100vh - 50px);
 }
-
-.Emp-managerment{
-    background-color:none;
-}
-/*Bảng quản lý nhân viên emp-table*/
-.emp-table {
-    border-collapse: separate;
-    display: grid;
-    background-color: #f7f7f7;
-}
-
-thead {
-    background-color: #ddd;
-}
-
-tbody tr {
-    background-color: #fff;
-}
-
-    tbody tr:nth-child(even) {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #ddd;
+    main .emp-container {
+        background-color: #e8eeef;
+        margin: 50px 0 0 0;
     }
+/*Emp Table */
+.body-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px 10px 20px;
+}
 
+#body-title {
+    font-size: 40px;
+    font-family: Arial;
+}
+
+.emp-container .table-responsive {
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.table-responsive .table {
+    font-size: 14px;
+    width: 100%;
+    /*table-layout: fixed;  Cố định layout của bảng */
+    border-collapse: collapse;
+    background-color: #e8eeef;
+}
+    th, td {
+    height: 30px;
+    padding: 10px 5px;
+    text-align:justify;
+    white-space: nowrap; /* Hạn chế xuống dòng */
+    overflow: hidden; /* Ẩn nội dung vượt quá */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu nội dung bị cắt */
+    border: 1px solid #fff;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    font-size: 14px;
+    padding:2px;
+    background-color: var(--primary-color);
+}
+
+.scrollbox-active:hover {
+    visibility: visible;
+}

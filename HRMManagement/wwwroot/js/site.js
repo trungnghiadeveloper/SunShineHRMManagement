@@ -23,4 +23,35 @@
             }
         });
     });
+
+    $(document).ready(function () {
+    $('#emps').click(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: '/Nhanvien/Emp-List',
+            success: function (data) {
+                $('#main-content').html(data);
+            },
+            error: function (error) {
+                console.error("Error loading content:", error);
+            }
+        });
+    });
+});
+});
+
+// Lưu vị trí scroll
+var scrollPosition = $(window).scrollTop();
+
+// Cập nhật nội dung và vị trí scroll
+$.ajax({
+    url: '/Nhanvien/Index',
+    success: function (data) {
+        $('#main-content').html(data);
+        $(window).scrollTop(scrollPosition);
+    },
+    error: function (error) {
+        console.error("Error loading content:", error);
+    }
 });
