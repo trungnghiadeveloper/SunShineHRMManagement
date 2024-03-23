@@ -70,19 +70,19 @@
                                  style="background-color:ghostwhite; border: solid; border-style: outset; margin-left: inherit ">
                                 <hr>
                                 <div class="row" style=" margin-left: inherit">
-                                    <div class="col-sm-4">Ho Ten:</div>
+                                    <div class="col-sm-4">Họ Tên:</div>
                                     <div class="col-sm-8">@Model.HoDem @Model.Ten</div>
                                 </div>
                                 <hr>
                                 <div class="row" style=" margin-left: inherit">
-                                    <div class="col-sm-4">Ngay Sinh:</div>
+                                    <div class="col-sm-4">Ngày Sinh:</div>
                                     <div class="col-sm-8">
                                         @Model.NgaySinh.ToString().Substring(0,10)
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row" style=" margin-left: inherit">
-                                    <div class="col-sm-4">Gioi Tinh:</div>
+                                    <div class="col-sm-4">Giới Tính:</div>
                                     <div class="col-sm-8">
                                         @if (Model.GioiTinh == true)
                                         {
@@ -101,7 +101,7 @@
                                 </div>
                                 <hr>
                                 <div class="row" style=" margin-left: inherit">
-                                    <div class="col-sm-4">Dia chi:</div>
+                                    <div class="col-sm-4">Địa chỉ:</div>
                                     <div class="col-sm-8">@Model.DiaChi</div>
                                 </div>
                                 <hr>
@@ -117,9 +117,7 @@
                                 <hr>
                             </div>
                             <br>
-                            <a href="#" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">
-                                Chỉnh Sửa Thông
-                                Tin Cá Nhân
+                            <a href="#" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">Chỉnh Sửa Thông Tin Cá Nhân
                             </a>
                         </div>
                     </div>
@@ -127,21 +125,20 @@
             </div>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="updateImage" tabindex="-1" role="dialog" aria-labelledby="ImageLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cập nhật ảnh đại diện</h5>
+                        <h5 class="modal-title" id="ImageLabel">Cập nhật ảnh đại diện</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Your form goes here -->
                         <form>
                             <div class="form-group">
-                                <label for="exampleInputName">Ảnh mới</label>
+                                <label for="InputImage">Ảnh mới</label>
                                 <input type="file" name="imageFile" id="imageFile" placeholder="Chọn ảnh" />
                                 <hr>
                             </div>
@@ -152,31 +149,6 @@
             </div>
         </div>
 
-
-        <div class="modal fade" id="updateImage" tabindex="-1" role="dialog" aria-labelledby="updateImageLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateImageLabel">Chỉnh sửa thông tin cá nhân</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Your form goes here -->
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputImage"></label>
-                                <input type="file" name="imageFile" id="imageFile" placeholder="Chọn ảnh" />
-                                <hr>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Tải lên</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
 
     </body>
