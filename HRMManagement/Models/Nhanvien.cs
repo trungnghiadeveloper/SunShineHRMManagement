@@ -27,7 +27,7 @@ public partial class Nhanvien
 
     public DateTime? NgayTuyenDung { get; set; }
 
-    public byte? AnhProfile { get; set; }
+    public byte[]? AnhProfile { get; set; }
 
     public int? IdviTri { get; set; }
 
