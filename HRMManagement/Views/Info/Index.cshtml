@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HRMManagement.Models.Nhanvien>
+<h2>Danh Sach Nhan Vien</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+         @foreach (var nv in Model)
+        {
+            <tr>
+            <td>@nv.Ten</td>
+            <td>@nv.Id</td>
+           
+            <td>
+                    <a href="@Url.Action("Display", "Info", new { id = nv.Id })">View Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
