@@ -34,6 +34,8 @@ public partial class Nhanvien
     public int? IdchucVu { get; set; }
 
     public int? IdphongBan { get; set; }
+  
+    public String HovaTen { get { return HoDem + " " + Ten; } }
 
     public virtual ICollection<Bangcap> Bangcaps { get; } = new List<Bangcap>();
 
@@ -58,6 +60,4 @@ public partial class Nhanvien
     public virtual ICollection<Tknganhang> Tknganhangs { get; } = new List<Tknganhang>();
 
     public virtual ICollection<Yeucaunghiphep> Yeucaunghipheps { get; } = new List<Yeucaunghiphep>();
-
-    public String HovaTen { get { return HoDem + " " + Ten; } }
 }

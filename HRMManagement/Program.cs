@@ -1,8 +1,11 @@
 using HRMManagement.DI;
+using HRMManagement.Models;
+using HRMManagement.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<HrmContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container
 builder.Services.AddDbContext<HRMDBContext>(options =>
@@ -12,6 +15,9 @@ builder.Services.AddControllersWithViews(); //
 
 // Add authorization services
 builder.Services.AddAuthorization();
+
+builder.Services.AddScoped<INhanVien, EFNhanVien>();
+builder.Services.AddScoped<IChucVu, EFChucVu>();
 
 var app = builder.Build();
 

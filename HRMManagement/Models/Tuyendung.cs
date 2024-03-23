@@ -13,7 +13,9 @@ public partial class Tuyendung
 
     public int? IdviTri { get; set; }
 
-    public virtual Vitricv? IdviTriNavigation { get; set; }
+    public string? IdungVien { get; set; }
 
-    public virtual ICollection<Ungvien> Ungviens { get; } = new List<Ungvien>();
+    public virtual Ungvien? IdungVienNavigation { get; set; }
+
+    public virtual Vitricv? IdviTriNavigation { get; set; }
 }
