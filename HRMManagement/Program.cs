@@ -1,7 +1,15 @@
+using HRMManagement.Models;
+using HRMManagement.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<HrmContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<INhanVien, EFNhanVien>();
+builder.Services.AddScoped<IChucVu, EFChucVu>();
 
 var app = builder.Build();
 
