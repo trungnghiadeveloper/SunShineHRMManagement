@@ -34,6 +34,8 @@ public partial class Nhanvien
     public int? IdchucVu { get; set; }
 
     public int? IdphongBan { get; set; }
+  
+    public String HovaTen { get { return HoDem + " " + Ten; } }
 
     public virtual ICollection<Bangcap> Bangcaps { get; } = new List<Bangcap>();
 
