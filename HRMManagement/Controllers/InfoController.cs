@@ -24,8 +24,23 @@ namespace HRMManagement.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var nv = await _nhanvien.GetAllAsync();
-            return View(nv);
+            var query = (from nv in _context.Nhanviens
+                         join cv in _context.Chucvus
+                         on nv.IdchucVu equals cv.Id
+                         join pb in _context.Phongbans
+                         on nv.IdphongBan equals pb.Id
+                         join vt in _context.Vitricvs
+                         on nv.IdviTri equals vt.Id
+                         select new Display
+                         {
+                             Id = nv.Id,
+                             HoDem = nv.HoDem,
+                             Ten = nv.Ten,
+                             TenChucVu = cv.TenChucVu,
+                             TenPhongBan = pb.TenPhongBan,
+                             TenVitri = vt.TenVitri
+                         }).ToList();
+            return View(query);
         }
 
         public async Task<IActionResult> Display(string id)
