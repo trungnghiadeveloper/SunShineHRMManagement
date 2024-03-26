@@ -29,8 +29,6 @@ public partial class Ungvien
 
     public string? LinkHoSo { get; set; }
 
-    public int? IdthongTinTuyenDung { get; set; }
-
     public virtual ICollection<Phongvan> Phongvans { get; } = new List<Phongvan>();
 
     public virtual ICollection<Tuyendung> Tuyendungs { get; } = new List<Tuyendung>();
