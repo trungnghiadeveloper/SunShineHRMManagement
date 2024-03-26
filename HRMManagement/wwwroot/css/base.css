@@ -1,20 +1,82 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+:root {
+    /*----- Color ------*/
+    --system-primary-color: #4378ff;
+    --system-secondary-color: #525252;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
+.app-width {
     max-width: 1440px;
+}
+
+body {
     margin: 0 auto;
     color: white;
     background-color: white;
     font-size: 16px;
     font-weight: normal;
+    font-family: "Inter", sans-serif;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.title1 {
     font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 56.25px;
+    color: white;
+}
+
+.title2 {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48.41px;
+    color: white;
+}
+
+.title2-dark {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    color: var(--system-secondary-color);
+}
+
+.title4 {
+    font-family: "Inter", sans-serif;
+    width: 400px;
+    font-size: 24px;
+    line-height: 29.05px;
+    color: white;
+}
+
+.description {
+    font-family: "Inter", sans-serif;
+    width: 400px;
+    font-size: 18px;
+    line-height: 21.78px;
+    color: white;
+}
+
+.text-secondary {
+    color: var(--system-secondary-color);
 }
 
 .bg-primary {
@@ -56,19 +118,20 @@ body {
     border: none;
     font-size: 16px;
     font-weight: 400;
+    transition: all .3s ease-in-out;
 }
 
-.btn-large {
-    display: grid;
-    place-items: center;
+.btn-transparent.btn-outline {
+    border: 1px solid #ccc;
+    color: white;
+    font-weight: 600;
     width: 170px;
     height: 46px;
-    color: white;
-    background-color: white;
-    border: 1px solid white;
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
+}
+
+.btn-transparent.btn-outline:hover {
+    border: 1px solid var(--system-primary-color);
+    color: var(--system-primary-color);
 }
 
 .btn-small-rounded {
@@ -142,32 +205,6 @@ body {
     height: 110%;
 }
 
-.header {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 60px;
-    padding: 0 60px;
-    color: white;
-    background: linear-gradient(to right, #3216E4, #5E4BD9, #5946CF);
-}
-
-.banner {
-    width: 100%;
-    height: 300px;
-    padding: 0 40px;
-    text-align: left;
-    color: white;
-    background: linear-gradient(to right, #3216E4, #5E4BD9, #5946CF);
-}
-
-.logo {
-    display: grid;
-    place-items: center;
-    width: 115px;
-    height: 36px;
-}
-
 .image {
     width: 100%;
     height: 100%;
@@ -184,4 +221,28 @@ body {
 
 .transition {
     transition: all .2s linear;
+}
+
+.flexStart {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexEnd {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.flexBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
