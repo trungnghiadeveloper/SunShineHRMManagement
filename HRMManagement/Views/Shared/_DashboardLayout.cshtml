@@ -1,0 +1,38 @@
+﻿﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg" href="~/assets/images/logo.png" />
+    <title>@ViewData["Title"] - HRMManagement</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="full-screen">
+        <div class="row" style="height: 100vh; width: 100%">
+            <div class="col-md-3 p-0">
+                <div style="width: 100%; height: 100%; background-color: black">
+                    <h3 class="text-center text-white m-0">Sidebar here</h3>
+                </div>
+            </div>
+            <div class="position-relative col-md-9 p-0">
+                <div class="position-absolute w-100 h-100 z-0">
+                    <img src="~/assets/images/bg-dashboard.png" alt="dashboard" class="image" />
+                </div>
+                <div class="position-absolute z-1">
+                    <header class="w-100">
+                        <h3>Header here</h3>
+                    </header>
+                    <main role="main" class="w-100 h-100 m-0">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
