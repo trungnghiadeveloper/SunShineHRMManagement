@@ -1,5 +1,9 @@
 ﻿@model HRMManagement.Models.Display
 
+@{
+    ViewData["Title"] = "Dashboard Page";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +17,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <style>
         * {
             margin: 0;
@@ -22,23 +25,20 @@
         .body {
             font-family: Arial, Helvetica, sans-serif;
             display: inline;
-            display: grid;
-            grid-template-columns: 20% 80%;
             margin: 0 auto;
-            max-width: 1600px;
+            max-width:1200px;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 
 @if (Model != null)
 {
-
     <body>
         <div class="body">
-            <div class="sidebar">
-            </div>
             <div class="Content">
-                <div class="row">
+                <div class="row" >
                     <div class="col-sm-4 p-3">
                         <div class="container mt-3">
                             <div class="card" style="max-width: 400px;">
@@ -63,7 +63,6 @@
                         <div class="info" style="max-width: 900px;">
                             <div class="info-title">
                                 <h2 style="text-align: center; padding-top: 20px;">Thông Tin Cá Nhân</h2>
-
                             </div>
 
                             <div class="info-body"
@@ -117,13 +116,12 @@
                                 <hr>
                             </div>
                             <br>
-                            <a href="#" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">Chỉnh Sửa Thông Tin Cá Nhân
-                            </a>
+                            <a href="#" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">Chỉnh Sửa Thông Tin Cá Nhân</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="modal fade" id="updateImage" tabindex="-1" role="dialog" aria-labelledby="ImageLabel"
              aria-hidden="true">
@@ -148,10 +146,7 @@
                 </div>
             </div>
         </div>
-
-
-
+        </div>
     </body>
 }
-
 </html>
