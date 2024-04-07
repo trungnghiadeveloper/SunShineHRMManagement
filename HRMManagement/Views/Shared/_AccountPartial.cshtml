@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@* 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+ *@
+
+<div>
+    <a id="manage" class="nav-link text-dark profile-detail" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+        <div class="profile-content">
+            <img src="~/assets/images/default-avatar.png" alt="Profile Image" class="profile-image">
+            <div class="profile-text">
+                <div id="profile-name" class="text name">Tên</div>
+                <div id="profile-job" class="text job">Vị trí CV</div>
+            </div>
+        </div>
+        <span class="material-symbols-outlined">
+            more_horiz
+        </span>
+    </a>
+</div>
