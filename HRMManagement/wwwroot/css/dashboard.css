@@ -28,14 +28,23 @@
 
 body {
     height: 100vh;
-    min-height: 100vh;
-    width: 100%;
+    margin: 0; 
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.bg-image {
+    background-image: url("~/images/WomenWithTablet.png");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .bg-dashboard {
@@ -56,45 +65,49 @@ body {
     top: 0;
     right: 0;
     width: calc(100vw - 265px);
-    z-index: 1000;
-    background-color: #ffffff80; /* Semi-transparent white */
-    padding-left: 10px;
+    margin-left: 10px;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
 }
 
-.my-navbar-left {
+.my-navbar-left{  
     display: flex;
     align-items: center;
     height: 30px;
-    width: 30vh;
+    width: 20vw;
     margin-left: 40px;
-    padding: 5px;
-    background-color: var(--primary-color);
+    background-color: var(--my-left-sidebar-dask-color); 
     border-radius: 50px;
     overflow: hidden;
 }
-
-    .my-navbar-left:is(:hover) .search-input,
+    .my-navbar-left:hover, .search-input
     .my-navbar-left .search-input:focus {
-        width: 50vh;
-        transition: var(--tran-05);
+        background-color: var( --scrollbar-thumb-color);
+        transition: width var(--tran-05);
     }
+
 
     .my-navbar-left .search-input {
-        width: 40vh;
+        flex-grow: 1;
         border: none;
         outline: none;
+        margin-left: 10px;
+        width: 15vw;
         background: transparent;
-        font-size: 14px;
-        align-content: center;
         color: var(--text-color);
     }
+    .my-navbar-left btn #search-icon{
+        font-size: 17px;
+        width: 5vw;
+        padding: 0px;
+    }
+
 
 .my-navbar .my-navbar-right a {
     padding-right: 20px;
     text-decoration: none;
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
 
@@ -111,6 +124,7 @@ body {
     margin-right: 5px;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 
 ::-webkit-scrollbar {
@@ -166,6 +180,14 @@ body {
     margin: 10px;
 }
 
+.mini-profile-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px;
+}
+
 .my-left-sidebar .profile-detail .profile-text .job {
     font-size: 16px;
     font-weight: 400;
@@ -210,7 +232,6 @@ body {
 .my-scrollbox {
     overflow: auto;
     visibility: hidden;
-    padding: 0;
 }
 
     .my-scrollbox-inner,
@@ -220,6 +241,7 @@ body {
 
 .my-scrollbox-inner {
     font-size: 16px;
+    max-height: 100vh;
 }
 
 .my-left-sidebar .my-scrollbox .my-scrollbox-inner .my-nav-list {
@@ -231,7 +253,6 @@ body {
         font-size: 18px;
         font-weight: 500;
         margin: 20px 0px 5px 10px;
-        font-weight: 500;
     }
 
 .my-left-sidebar ul {
@@ -304,64 +325,40 @@ body {
 
 /* main */
 main {
-    top: -50px;
+    position: fixed;
     right: 0;
     bottom: 0;
-    margin-left: 270px;
-    width: calc(100vw - 275px); /* trừ đi chiều rộng của sidebar và một chút margin */
-    height: calc(100vh - 50px);
+    width: calc(100% - 270px); 
+    height: calc(100% - 50px);
+    z-index: 3;
+    overflow: hidden; /* Ẩn nội dung khi vượt quá kích thước max-width và max-height */
 }
 
-    main .emp-container {
-        background-color: #e8eeef;
-        margin: 50px 0 0 0;
-    }
-/*Emp Table */
-.body-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 20px 0px 10px 20px;
+/* #main-content */
+#main-content {
+    max-width: 100%;
+    max-height: 100%;
 }
 
-#body-title {
-    font-size: 40px;
-    font-family: Arial;
+/* .my-scrollbox */
+.my-scrollbox {
+    overflow-x: auto; /* Cho phép scroll ngang nếu cần */
+    max-height: 100%;/* Đảm bảo nó không ảnh hưởng đến layout của các phần khác */
 }
 
-.emp-container .table-responsive {
-    width: 100%;
-    max-height: 100vh;
-    overflow-y: auto;
-    overflow-x: auto;
+
+    
+tr:hover, th:hover {
+    cursor: pointer;
+}
+tbody tr:hover {
+    color: aqua;
+    background-color: #DFF5FF;
+    transition: var(--tran-05);
 }
 
-.table-responsive .table {
-    font-size: 14px;
-    width: 100%;
-    /*table-layout: fixed;  Cố định layout của bảng */
-    border-collapse: collapse;
-    background-color: #e8eeef;
+.filter-icon {
+    margin-left: 10px;
+    font-size: 20px;
 }
 
-th, td {
-    height: 30px;
-    padding: 10px 5px;
-    text-align: justify;
-    white-space: nowrap; /* Hạn chế xuống dòng */
-    overflow: hidden; /* Ẩn nội dung vượt quá */
-    text-overflow: ellipsis; /* Hiển thị dấu ba chấm nếu nội dung bị cắt */
-    border: 1px solid #fff;
-}
-
-thead th {
-    position: sticky;
-    top: 0;
-    font-size: 14px;
-    padding: 2px;
-    background-color: var(--primary-color);
-}
-
-.scrollbox-active:hover {
-    visibility: visible;
-}

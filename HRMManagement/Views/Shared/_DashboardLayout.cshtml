@@ -1,317 +1,307 @@
-﻿@* @model IEnumerable<SunshineEnterprise.Models.Nhanvien> *@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg" href="~/assets/images/logo.png" />
     <title>@ViewData["Title"] - Sunshine Enterprise</title>
     <!-- GG Icons -->
-    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
-    <link rel="stylesheet" href="~/css/dashboart.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
+    <link rel="stylesheet" href="~/css/dashboard.css">
+    <link rel="stylesheet" href="~/css/core.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/js/helpers.js"></script>
+    <script src="~/js/config.js"></script>
 </head>
-<body style="background-image: url('~/assets/images/bg-dashboard.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed;">
-    <div class="wrapper">
+<body>
+    <header>
         <!-- Navbar -->
-        <header>
-            <div class="my-navbar">
-                <div class="my-navbar-left">
-                    <span class="material-symbols-outlined">
+        <div class="my-navbar">
+            <form asp-controller="Info" asp-action="Index" method="get" class="my-navbar-left d-flex">
+                <input name="searchString" type="search" placeholder="Search" aria-label="Search" class="search-input">
+                <button class="btn search-input" type="submit">
+                    <span id="search-icon" class="material-symbols-outlined">
                         search
                     </span>
-                    <input type="text" placeholder="Search..." class="search-input">
-                </div>
-                <div class="my-navbar-right">
-                    <a asp-area="" asp-controller="" asp-action="" class="Notification">
-                        <span class="material-symbols-outlined">
-                            notifications_unread
-                        </span>
-                    </a>
-                    <a asp-area="" asp-controller="" asp-action="" class="Setting">
-                        <span class="material-symbols-outlined">
-                            settings
-                        </span>
+                </button>
+            </form>
+            <div class="my-navbar-right">
+                <a asp-area="" asp-controller="" asp-action="" class="Notification">
+                    <span class="material-symbols-outlined">
+                        notifications_unread
+                    </span>
+                </a>
+                <a asp-area="" asp-controller="" asp-action="" class="Setting">
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <aside>
+        <!-- Sidebar -->
+        <div class="my-left-sidebar close">
+            <div>
+                @* ACCOUNT INFO *@
+                <partial name="_AccountPartial" />
+                <div>
+                    <a asp-area="" asp-controller="" asp-action="" class="dashboard">
+                        <img src="~/assets/images/dashboard_FILL.png">
+                        <span class="dash-text">Dashboard</span>
                     </a>
                 </div>
             </div>
+            <!-- SCROLLBAR -->
+            <div class="my-scrollbox">
+                <div class="my-scrollbox-inner">
+                    <ul class="my-nav-list">
+                        <!-- Cham cong -->
+                        <div class="side-title text">Chấm công</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    event_available
+                                </span>
+                                <span class="links-name text text">Điểm danh</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    work_history
+                                </span>
+                                <span class="links-name text">Tóm tắt hằng ngày</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    calendar_month
+                                </span>
+                                <span class="links-name text">Bảng chấm công</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    free_cancellation
+                                </span>
+                                <span class="links-name text">Tóm tắt thời gian</span>
+                            </a>
+                        </li>
 
-            <!-- Sidebar -->
-            <div class="my-left-sidebar close">
-                <div>
-                    <a asp-area="" asp-controller="Nhanvien" asp-action="Details" class="profile-detail">
-                        <div class="profile-content">
-                            <img src=""
-                                 alt="Profile Image" class="profile-image">
-                            <div class="profile-text">
-                                <div class="text name">Tên nhân sự</div>
-                                <div class="text job">Tên vị trí/ chức vụ</div>
-                            </div>
-                        </div>
-                        <span class="material-symbols-outlined">
-                            more_horiz
-                        </span>
-                        <!-- <span class="material-symbols-outlined toggle">
-                            chevron_left
-                        </span> -->
-                    </a>
-                    <div>
-                        <a asp-area="" asp-controller="" asp-action="" class="dashboard">
-                            <img src="~/assets/images/dashboard_FILL.png">
-                            <span class="dash-text">Dashboard</span>
-                        </a>
-                    </div>
+                        <!-- Nghi phep va Vang -->
+                        <div class="side-title text">Nghỉ phép & Vắng</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    fingerprint_off
+                                </span>
+                                <span class="links-name text">Yêu cầu nghỉ phép</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    event_busy
+                                </span>
+                                <span class="links-name text">Tóm tắt nghỉ phép</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    assignment_late
+                                </span>
+                                <span class="links-name text">Đóng cửa kinh doanh</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    early_on
+                                </span>
+                                <span class="links-name text">Lịch nghỉ phép</span>
+                            </a>
+                        </li>
+
+                        <!-- Tuyen dung -->
+                        <div class="side-title text">Tuyển dụng</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    photo_auto_merge
+                                </span>
+                                <span class="links-name text">Hồ sơ tuyển dụng</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    work
+                                </span>
+                                <span class="links-name text">Vị trí tuyển</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+
+                                <span class="icons material-symbols-outlined">
+                                    clinical_notes
+                                </span>
+                                <span class="links-name text">Ứng viên</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    gavel
+                                </span>
+                                <span class="links-name text">Điều khoản</span>
+                            </a>
+                        </li>
+
+                        <!-- Quan ly -->
+                        <div class="side-title text">Quản lý</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="Info" asp-action="Index" id="emps">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    badge
+                                </span>
+                                <span class="links-name text">Nhân sự</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    gavel
+                                </span>
+                                <span class="links-name text">Điều khoản lao động</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    folder_managed
+                                </span>
+                                <span class="links-name text">Thay đổi dữ liệu</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    feedback
+                                </span><i class='bx bx-timer'></i>
+                                <span class="links-name text">Biện pháp kỷ luật</span>
+                            </a>
+                        </li>
+
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    personal_injury
+                                </span>
+                                <span class="links-name text">Tai nạn lao động</span>
+                            </a>
+                        </li>
+
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    lab_profile
+                                </span>
+                                <span class="links-name text">Bệnh án</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    workspace_premium
+                                </span>
+                                <span class="links-name text">Chứng nhận</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    rule
+                                </span>
+                                <span class="links-name text">Bài tập quy trình</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    circles_ext
+                                </span>
+                                <span class="links-name text">Vị trí</span>
+                            </a>
+                        </li>
+                        <!-- Quan ly -->
+                        <div class="side-title text">Chi quỹ</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    paid
+                                </span>
+                                <span class="links-name text">Lương thưởng</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+
+                                <span class="icons material-symbols-outlined">
+                                    price_check
+                                </span>
+                                <span class="links-name text">Thanh toán</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    query_stats
+                                </span>
+                                <span class="links-name text">Tóm tắt thanh toán</span>
+                            </a>
+                        </li>
+
+                    </ul>
                 </div>
-                <!-- SCROLLBAR -->
-                <div class="my-scrollbox">
-                    <div class="my-scrollbox-inner">
-                        <ul class="my-nav-list">
-                            <!-- Cham cong -->
-                            <div class="side-title text">Chấm công</div>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        event_available
-                                    </span>
-                                    <span class="links-name text text">Điểm danh</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        work_history
-                                    </span>
-                                    <span class="links-name text">Tóm tắt hằng ngày</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        calendar_month
-                                    </span>
-                                    <span class="links-name text">Bảng chấm công</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        free_cancellation
-                                    </span>
-                                    <span class="links-name text">Tóm tắt thời gian</span>
-                                </a>
-                            </li>
-
-                            <!-- Nghi phep va Vang -->
-                            <div class="side-title text">Nghỉ phép & Vắng</div>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        fingerprint_off
-                                    </span>
-                                    <span class="links-name text">Yêu cầu nghỉ phép</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        event_busy
-                                    </span>
-                                    <span class="links-name text">Tóm tắt nghỉ phép</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        assignment_late
-                                    </span>
-                                    <span class="links-name text">Đóng cửa kinh doanh</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        early_on
-                                    </span>
-                                    <span class="links-name text">Lịch nghỉ phép</span>
-                                </a>
-                            </li>
-
-                            <!-- Tuyen dung -->
-                            <div class="side-title text">Tuyển dụng</div>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        photo_auto_merge
-                                    </span>
-                                    <span class="links-name text">Hồ sơ tuyển dụng</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        work
-                                    </span>
-                                    <span class="links-name text">Vị trí tuyển</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-
-                                    <span class="icons material-symbols-outlined">
-                                        clinical_notes
-                                    </span>
-                                    <span class="links-name text">Ứng viên</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        gavel
-                                    </span>
-                                    <span class="links-name text">Điều khoản</span>
-                                </a>
-                            </li>
-
-                            <!-- Quan ly -->
-                            <div class="side-title text">Quản lý</div>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="Nhanvien" asp-action="" id="emps">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        badge
-                                    </span>
-                                    <span class="links-name text">Nhân sự</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        gavel
-                                    </span>
-                                    <span class="links-name text">Điều khoản lao động</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        folder_managed
-                                    </span>
-                                    <span class="links-name text">Thay đổi dữ liệu</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        feedback
-                                    </span><i class='bx bx-timer'></i>
-                                    <span class="links-name text">Biện pháp kỷ luật</span>
-                                </a>
-                            </li>
-
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        personal_injury
-                                    </span>
-                                    <span class="links-name text">Tai nạn lao động</span>
-                                </a>
-                            </li>
-
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        lab_profile
-                                    </span>
-                                    <span class="links-name text">Bệnh án</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        workspace_premium
-                                    </span>
-                                    <span class="links-name text">Chứng nhận</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        rule
-                                    </span>
-                                    <span class="links-name text">Bài tập quy trình</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        circles_ext
-                                    </span>
-                                    <span class="links-name text">Vị trí</span>
-                                </a>
-                            </li>
-                            <!-- Quan ly -->
-                            <div class="side-title text">Chi quỹ</div>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        paid
-                                    </span>
-                                    <span class="links-name text">Lương thưởng</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-
-                                    <span class="icons material-symbols-outlined">
-                                        price_check
-                                    </span>
-                                    <span class="links-name text">Thanh toán</span>
-                                </a>
-                            </li>
-                            <li class="task-name">
-                                <a asp-area="" asp-controller="" asp-action="">
-                                    <div class="vertical-bar"></div>
-                                    <span class="icons material-symbols-outlined">
-                                        query_stats
-                                    </span>
-                                    <span class="links-name text">Tóm tắt thanh toán</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-        </header>
-
-        <div class="w-100 h-auto main-content">
-            <main role="main">
+            </div>
+         </div>
+    </aside>
+    <main>
+        <div id="main-content" class="my-scrollbox">
                 @RenderBody()
-            </main>
         </div>
-        <footer></footer>
-    </div>
+    </main>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -321,3 +311,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+
