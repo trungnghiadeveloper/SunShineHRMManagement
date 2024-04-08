@@ -82,11 +82,11 @@ namespace HRMManagement.Controllers
             }
             return "/images/" + image.FileName;
         }
-       
+
 
         public async Task<IActionResult> Updateimage(string id)
         {
-            var nv= await _nhanvien.GetByIdAsync(id);
+            var nv = await _nhanvien.GetByIdAsync(id);
             if (nv == null)
             {
                 return NotFound();
@@ -115,17 +115,48 @@ namespace HRMManagement.Controllers
                 else
                 {
                     string myString = imageUrl.ToString();
-                   
+
                     // Lưu hình ảnh mới
-                 //   product.AnhProfile = await SaveImage(imageUrl);
+                    //   product.AnhProfile = await SaveImage(imageUrl);
                 }
 
-                existingProduct.AnhProfile= product.AnhProfile;
+                existingProduct.AnhProfile = product.AnhProfile;
 
                 await _nhanvien.Updateimage(existingProduct.ToString());
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
         }
+
+        public async Task<IActionResult> Update(string id)
+        {
+            var query = (from nv in _context.Nhanviens
+                         join cv in _context.Chucvus
+                         on nv.IdchucVu equals cv.Id
+                         join pb in _context.Phongbans
+                         on nv.IdphongBan equals pb.Id
+                         join vt in _context.Vitricvs
+                         on nv.IdviTri equals vt.Id
+                         select new Display
+                         {
+                             Id = nv.Id,
+                             HoDem = nv.HoDem,
+                             Ten = nv.Ten,
+                             NgaySinh = nv.NgaySinh,
+                             GioiTinh = nv.GioiTinh,
+                             Cccd = nv.Cccd,
+                             DiaChi = nv.DiaChi,
+                             Sdt = nv.Sdt,
+                             Email = nv.Email,
+                             TenChucVu = cv.TenChucVu,
+                             TenPhongBan = pb.TenPhongBan,
+                             TenVitri = vt.TenVitri
+                         }).ToList();
+            var ma = query.FirstOrDefault(p => p.Id == id);
+            return View(ma);
+        }
+
     }
+       
+    
 }

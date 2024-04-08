@@ -27,6 +27,11 @@ namespace HRMManagement.Repositories
             
         }
 
+        public Task<Nhanvien> Update(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IActionResult> Updateimage(string id)
         {
             throw new NotImplementedException();

@@ -116,7 +116,7 @@
                                 <hr>
                             </div>
                             <br>
-                            <a href="#" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">Chỉnh Sửa Thông Tin Cá Nhân</a>
+                            <a class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;" asp-controller="Info" asp-action="Update" asp-route-id="@Model.Id">Chỉnh Sửa Thông Tin Cá Nhân</a>
                         </div>
                     </div>
                 </div>
@@ -129,14 +129,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="ImageLabel">Cập nhật ảnh đại diện</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <button type="button" class="btn-close btn-sm" data-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <label for="InputImage">Ảnh mới</label>
+                                <label for="InputImage"></label>
                                 <input type="file" name="imageFile" id="imageFile" placeholder="Chọn ảnh" />
                                 <hr>
                             </div>

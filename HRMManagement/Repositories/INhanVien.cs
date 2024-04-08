@@ -10,5 +10,6 @@ namespace HRMManagement.Repositories
         Task<IEnumerable<Nhanvien>> GetAllAsync();
         Task<Nhanvien> GetByIdAsync(string id);
         Task<IActionResult> Updateimage(string id);
+        Task<Nhanvien> Update(string id);
     }
 }
