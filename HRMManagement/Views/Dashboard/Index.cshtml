@@ -1,8 +1,193 @@
-﻿﻿@{
+﻿@{
     ViewData["Title"] = "Dashboard Page";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    var stats = (Dictionary<string, int>)ViewData["stats"];
 }
 
-<div class="w-100 h-100">
-    <h3>Dashboard Content</h3>
+<div class="dashboard__content-main">
+    <div class="dashboard__card-grid">
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zeplin.svg" /></span>
+                    <h3>Nhân viên</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/github.svg" /></span>
+                    <h3>GitHub</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/figma.svg" /></span>
+                    <h3>Figma</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zapier.svg" /></span>
+                    <h3>Zapier</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/notion.svg" /></span>
+                    <h3>Notion</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/slack.svg" /></span>
+                    <h3>Slack</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zendesk.svg" /></span>
+                    <h3>Zendesk</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/jira.svg" /></span>
+                    <h3>Atlassian JIRA</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/dropbox.svg" /></span>
+                    <h3>Dropbox</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/google-chrome.svg" /></span>
+                    <h3>Google Chrome</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/discord.svg" /></span>
+                    <h3>Discord</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/google-drive.svg" /></span>
+                    <h3>Google Drive</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/google-drive.svg" /></span>
+                    <h3>Google Drive</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">100</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+    </div>
 </div>
