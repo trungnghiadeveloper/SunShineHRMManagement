@@ -357,6 +357,7 @@ img {
 .dashboard__card-header div h3 {
     margin-left: 24px;
     font-weight: 500;
+    font-size: 20px !important;
 }
 
 .dashboard__card-body {
