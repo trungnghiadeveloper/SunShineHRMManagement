@@ -10,6 +10,9 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<INhanVien, EFNhanVien>();
 builder.Services.AddScoped<IChucVu, EFChucVu>();
+builder.Services.AddScoped<IPhongBan, EFPhongBan>();
+builder.Services.AddScoped<IViTricv, EFViTricv>();
+
 
 var app = builder.Build();
 

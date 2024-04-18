@@ -1,13 +1,9 @@
-﻿@model HRMManagement.Models.Display
+﻿@model HRMManagement.Models.Nhanvien
 
 @{
-    ViewData["Title"] = "Dashboard Page";
+    ViewData["Title"] = "Chỉnh Sửa Thông Tin";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
-
-<!doctype html>
-<html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,46 +14,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/css/updatebootstrap.min.css">
-
     <!-- Style -->
     <link rel="stylesheet" href="~/css/updatestyle.css">
-
     <title>Chỉnh Sửa Thông Tin</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // AJAX request to fetch data for the select box
-            $.ajax({
-                url: '/Info/Update', // Replace with your controller action URL
-                type: 'GET',
-                success: function (data) {
-                    // Populate select box with data
-                    data.forEach(function (item) {
-                        $('#gioitinh').append($('<option>', {
-                            value: item.Value,
-                            text: item.Text
-                        }));
-                    });
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-
-            // AJAX request to fetch data for the date input field
-            $.ajax({
-                url: '/Info/Update', // Replace with your date action URL
-                type: 'GET',
-                success: function (dateValue) {
-                    // Set value for date input field
-                    $('#ngaysinh').val(dateValue);
-                },
-                error: function (xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-        });
-    </script>
 </head>
 
 @if (Model != null)
@@ -69,7 +29,8 @@
                     <div class="col-md-7">
                         <div class="form h-100 contact-wrap p-5">
                             <h3 class="text-center">Chỉnh sửa thông tin cá nhân</h3>
-                            <form class="mb-5" method="post" id="updateForm" name="updateForm">
+                            <form class="mb-5" asp-controller="Info" asp-action="Update" method="post" id="updateForm" name="updateForm">
+                             
                                 <div class="row">
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="" class="col-form-label">Họ Đệm *</label>
@@ -93,14 +54,13 @@
                                         {
                                             <span>Nu</span>
                                         }">
-                                        
-                                            <option value="nam">Nam</option>
-                                            <option value="nu">Nữ</option>
+                                            <option value="true">Nam</option>
+                                            <option value="false">Nữ</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="" class="col-form-label">Ngày Sinh *</label>
-                                        <input type="date" class="form-control" id="ngaysinh" name="Ngaysinh" placeholder="Ngay Sinh" value="@Model.NgaySinh.ToString().Substring(0,10)">
+                                        <input type="date" class="form-control" id="ngaysinh" name="Ngaysinh" placeholder="@Model.NgaySinh.ToString()" value="@Model.NgaySinh.ToString()">
                                     </div>
                                 </div>
 
@@ -132,10 +92,8 @@
                                 <br>
 
                                 <div class="row justify-content-center">
-                                    <div class="col-md-7 form-group text-center">
-                                        <input type="submit" value="Lưu"
-                                        class="btn btn-block btn-primary rounded-0 py-2 px-4">
-                                        <span class="submitting"></span>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: large;">Lưu</button>
                                     </div>
                                 </div>
                             </form>
@@ -148,4 +106,3 @@
         </div>
     </body>
 }
-</html>
