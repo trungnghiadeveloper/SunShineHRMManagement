@@ -1,0 +1,108 @@
+﻿@model HRMManagement.Models.Nhanvien
+
+@{
+    ViewData["Title"] = "Chỉnh Sửa Thông Tin";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/updatefont.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/updatebootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="~/css/updatestyle.css">
+    <title>Chỉnh Sửa Thông Tin</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+@if (Model != null)
+{
+    <body>
+        <div class="content">
+            <div class="container">
+                <div class="row align-items-stretch justify-content-center no-gutters">
+                    <div class="col-md-7">
+                        <div class="form h-100 contact-wrap p-5">
+                            <h3 class="text-center">Chỉnh sửa thông tin cá nhân</h3>
+                            <form class="mb-5" asp-controller="Info" asp-action="Update" method="post" id="updateForm" name="updateForm">
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Họ Đệm *</label>
+                                        <input type="text" class="form-control" name="Hodem" id="hodem" value="@Model.HoDem"
+                                               placeholder="Ho Dem">
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Tên *</label>
+                                        <input type="text" class="form-control" name="Ten" id="ten" placeholder="Ten" value="@Model.Ten">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Giới Tính *</label>
+                                        <select class="custom-select" id="gioitinh" name="Gioitinh" placeholder="Gioi Tinh" value="@if (Model.GioiTinh == true)
+                                            {
+                                            <span>Nam</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Nu</span>
+                                        }">
+                                                <option value="true">Nam</option>
+                                                <option value="false">Nữ</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Ngày Sinh *</label>
+                                        <input type="date" class="form-control" id="ngaysinh" name="Ngaysinh" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Số Điện Thoại *</label>
+                                        <input type="text" class="form-control" name="SDT" id="sdt" placeholder="Dien Thoai" value="@Model.Sdt">
+                                    </div>
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">Email *</label>
+                                        <input type="email" class="form-control" name="Email" id="email" placeholder="Email" value="@Model.Email">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 form-group mb-3">
+                                        <label for="" class="col-form-label">CCCD *</label>
+                                        <input type="text" class="form-control" name="CCCD" id="cccd" placeholder="CCCD" value="@Model.Cccd">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-3">
+                                        <label for="" class="col-form-label">Địa Chỉ *</label>
+                                        <input type="text" class="form-control" name="DiaChi" id="diachi" placeholder="Dia Chi" value="@Model.DiaChi">
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row justify-content-center">
+                                    <div>
+                                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: large;">Lưu</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="form-message-warning mt-4"></div>
+                            <div id="form-message-success">Xong</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+}

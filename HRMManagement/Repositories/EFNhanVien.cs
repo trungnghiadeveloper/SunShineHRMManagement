@@ -26,6 +26,25 @@ namespace HRMManagement.Repositories
             return   await _context.Nhanviens.FindAsync(id);
             
         }
+        public async Task UpdateAsync(Nhanvien nv)
+        {
+            _context.Nhanviens.Update(nv);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddAsync(Nhanvien nv)
+        {
+            _context.Nhanviens.Add(nv);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(string id)
+        {
+            var nv = await _context.Nhanviens.FindAsync(id);
+            _context.Nhanviens.Remove(nv);
+            await _context.SaveChangesAsync();
+        }
+
 
         public Task<IActionResult> Updateimage(string id)
         {
