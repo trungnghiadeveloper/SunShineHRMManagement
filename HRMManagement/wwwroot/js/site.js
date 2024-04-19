@@ -38,66 +38,46 @@
                 }
             });
         });
+        $('#departmentFilter, #titleFilter, #positionFilter').change(function () {
+            applyFilters();
+        });
     });
 });
 
-// Lưu vị trí scroll
-var scrollPosition = $(window).scrollTop();
+//// Lưu vị trí scroll
+//var scrollPosition = $(window).scrollTop();
 
-// Cập nhật nội dung và vị trí scroll
-$.ajax({
-    url: '/Nhanvien/Index',
-    success: function (data) {
-        $('#main-content').html(data);
-        $(window).scrollTop(scrollPosition);
-    },
-    error: function (error) {
-        console.error("Error loading content:", error);
-    }
-});
+//// Cập nhật nội dung và vị trí scroll
+//$.ajax({
+//    url: '/Info/Index',
+//    success: function (data) {
+//        $('#main-content').html(data);
+//        $(window).scrollTop(scrollPosition);
+//    },
+//    error: function (error) {
+//        console.error("Error loading content:", error);
+//    }
+//});
 function redirectToDetail(id) {
     window.location.href = 'Display/' + id;
 }
+function applyFilters() {
+    var departmentFilter = $('#departmentFilter').val();
+    var titleFilter = $('#titleFilter').val();
+    var positionFilter = $('#positionFilter').val();
 
-function filterData() {
-    // Get search string and selected filters
-    const searchString = document.getElementById("searchString").value;
-    const filterByName = document.getElementById("filterByName").checked;
-    const filterById = document.getElementById("filterById").checked;
-    const filterByPosition = document.getElementById("filterByPosition").checked;
-    const filterByDepartment = document.getElementById("filterByDepartment").checked;
-
-    // Prepare filter logic based on selections
-    let filterQuery = "";
-    if (filterByName) {
-        filterQuery += "n.Ten.contains(@searchString) || ";
-    }
-    if (filterById) {
-        filterQuery += "n.Id.contains(@searchString) || ";
-    }
-    if (filterByPosition) {
-        filterQuery += "n.TenVitri.contains(@searchString) || ";
-    }
-    if (filterByDepartment) {
-        filterQuery += "n.TenPhongBan.contains(@searchString) || ";
-    }
-
-    // Remove the last "||" if any filters were selected
-    if (filterQuery.length > 0) {
-        filterQuery = filterQuery.substring(0, filterQuery.length - 4);
-    }
-
-    // Simulate form submission (assuming you have a form for filtering)
-    // Replace this with your actual form submission logic if needed
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = "@Url.Action("Index", "Info")"; // Replace with your actual action URL
-    const searchStringInput = document.createElement("input");
-    searchStringInput.type = "hidden";
-    searchStringInput.name = "searchString";
-    searchStringInput.value = searchString;
-    form.appendChild(searchStringInput);
-
-    // Submit the form
-    form.submit();
+    // Gửi yêu cầu Ajax tới controller
+    $.ajax({
+        url: '/Info/Index',
+        type: 'GET',
+        data: {
+            departmentFilter: departmentFilter,
+            titleFilter: titleFilter,
+            positionFilter: positionFilter
+        },
+        success: function (data) {
+            // Cập nhật nội dung view với dữ liệu mới từ controller
+            $('#resultContainer').html(data);
+        }
+    });
 }

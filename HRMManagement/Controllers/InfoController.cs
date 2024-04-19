@@ -22,7 +22,7 @@ namespace HRMManagement.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string positionFilter, string titleFilter, string departmentFilter,  int pageNumber)
         {
             var query = (from nv in _context.Nhanviens
                          join cv in _context.Chucvus
@@ -40,6 +40,68 @@ namespace HRMManagement.Controllers
                              TenPhongBan = pb.TenPhongBan,
                              TenVitri = vt.TenVitri
                          }).ToList();
+
+
+            // Filters take advantage of the search feature
+            // Get the unique presence of columns  
+            var uniquePhongBan = query.Select(n => n.TenPhongBan).Distinct().OrderBy(x => x).ToList();
+            var uniqueViTri = query.Select(n => n.TenVitri).Distinct().OrderBy(x => x).ToList();
+            var uniqueChucVu = query.Select(n => n.TenChucVu).Distinct().OrderBy(x => x).ToList();
+
+            if (uniqueChucVu != null
+                && uniqueViTri != null
+                && uniquePhongBan != null)
+            {
+                ViewBag.uniquePhongBan = uniquePhongBan;
+                ViewBag.uniqueViTri = uniqueViTri;
+                ViewBag.uniqueChucVu = uniqueChucVu;
+            }
+
+            // Search
+            if (!string.IsNullOrEmpty(searchString) && query != null)
+            {
+                if (searchString == "all")
+                {
+                    return View(query);
+                }
+                query = query.Where(n => (n.TenPhongBan != null && n.TenPhongBan.Contains(searchString)
+                      || (n.TenVitri != null && n.TenVitri.Contains(searchString))
+                      || (n.TenChucVu != null && n.TenChucVu.Contains(searchString))
+                      || n.Ten != null && n.Ten.Contains(searchString))
+                      || (n.HoDem != null && n.HoDem.Contains(searchString))
+                      || (n.Ten != null && n.HoDem != null && (n.HoDem+" "+n.Ten).Contains(searchString))
+                      || (n.Id != null && n.Id.Contains(searchString))
+                      || (n.Sdt != null && n.Sdt.Contains(searchString))
+                      || (n.Cccd != null && n.Cccd.Contains(searchString))
+                      // More ...
+                      ).OrderBy(n => n.Ten).ToList();
+            }
+
+            // Filter
+            if (!string.IsNullOrEmpty(positionFilter) && query != null)
+            {
+                query = query.Where(n => n.TenVitri != null && n.TenVitri != null && n.TenVitri.Contains(positionFilter)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(titleFilter) && query != null)
+            {
+                query = query.Where(n => n.TenChucVu != null && n.TenChucVu != null && n.TenChucVu.Contains(titleFilter)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(departmentFilter) && query != null)
+            {
+                query = query.Where(n => n.TenPhongBan != null && n.TenPhongBan != null && n.TenPhongBan.Contains(departmentFilter)).ToList();
+            }
+            ////
+
+            //if(pageNumber <1)
+            //{
+            //    pageNumber = 1;
+            //}
+
+            //int pageSize = 5;
+            //var paginatedList = new PaginatedList<Display>(query, query.Count(), pageNumber, pageSize);
+
             return View(query);
         }
 
