@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Text;
 using System.Resources;
+using System.Reflection.Metadata.Ecma335;
 
 namespace HRMManagement.Controllers
 {
@@ -16,13 +17,15 @@ namespace HRMManagement.Controllers
         private readonly IViTricv _vitricv;
         private readonly IPhongBan _phongban;
         private readonly HrmContext _context;
-        public InfoController(HrmContext context, INhanVien nhanvien, IPhongBan phongban, IViTricv vitricv, IChucVu chucvu)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public InfoController(HrmContext context, INhanVien nhanvien, IPhongBan phongban, IViTricv vitricv, IChucVu chucvu, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
             _nhanvien = nhanvien;
             _vitricv = vitricv;
             _phongban = phongban;
             _chucvu = chucvu;
+            _hostingEnvironment = hostingEnvironment;
         }
 
 
@@ -138,10 +141,16 @@ namespace HRMManagement.Controllers
         [HttpPost, ActionName("DeleteConfirmed")]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            await _nhanvien.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _nhanvien.DeleteAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ModelState);
+            }
         }
-
 
         public async Task<IActionResult> Update(string id)
         {
@@ -194,58 +203,48 @@ namespace HRMManagement.Controllers
 
         private async Task<string> SaveImage(IFormFile image)
         {
-            var savePath = Path.Combine("wwwroot/images", image.FileName);
+            var savePath = Path.Combine("wwwroot/image", image.FileName);
 
             using (var fileStream = new FileStream(savePath, FileMode.Create))
             {
                 await image.CopyToAsync(fileStream);
             }
-            return "/images/" + image.FileName;
-        }
-       
-
-        public async Task<IActionResult> Updateimage(string id)
-        {
-            var nv= await _nhanvien.GetByIdAsync(id);
-            if (nv == null)
-            {
-                return NotFound();
-            }
-            return View(nv);
+            return "/image/" + image.FileName;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Updateimage(string id, Nhanvien product, IFormFile imageUrl)
+        public async Task<IActionResult> UploadImages( string id, [FromForm] IFormFile imageFile)
         {
-            ModelState.Remove("ImageUrl"); // Loại bỏ xác thực ModelState cho
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                try
+                {
+                    string fileName = $"{id}.jpg";
+                    var uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "profileimages");
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+                    
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
 
-            if (id != product.Id)
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(fileStream);
+                    }
+
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    return Content($"Error: {ex.Message}");
+                }
+            }
+            else
             {
                 return NotFound();
             }
-            if (ModelState.IsValid)
-            {
-                var existingProduct = await _nhanvien.GetByIdAsync(id); // Giả định có phương thức GetByIdAsync
-                                                                        // Giữ nguyên thông tin hình ảnh nếu không có hình mới được
-
-                if (imageUrl == null)
-                {
-                    product.AnhProfile = existingProduct.AnhProfile;
-                }
-                else
-                {
-                    string myString = imageUrl.ToString();
-                   
-                    // Lưu hình ảnh mới
-                 //   product.AnhProfile = await SaveImage(imageUrl);
-                }
-
-                existingProduct.AnhProfile= product.AnhProfile;
-
-                await _nhanvien.Updateimage(existingProduct.ToString());
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
         }
     }
+    
 }

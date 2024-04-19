@@ -46,7 +46,7 @@ namespace HRMManagement.Repositories
         }
 
 
-        public Task<IActionResult> Updateimage(string id)
+        public Task<IActionResult> UploadImage(string id)
         {
             throw new NotImplementedException();
         }
