@@ -1,80 +1,55 @@
 ﻿@model IEnumerable<HRMManagement.Models.Display>
 @{
-    ViewData["Title"] = "Dashboard Page";
+    ViewData["Title"] = "Danh sách nhân viên";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-   
-    <style>
-        * {
-            margin: 0;
-        }
-
-        .body {
-            font-family: Arial, Helvetica, sans-serif;
-            display: inline;
-            margin: 0 auto;
-            max-width: 1200px;
-        }
-
-        .trash-icon::before {
-            font-family: 'Material Symbols Outlined';
-        }
-
-        .trash-icon::before {
-         content: "\e872"; 
-         font-size:large;
-        }
-
-    </style>
-</head>
-
-
-<body> 
-    <div class="container mt-3">
-            <div>
-                <h2 style="text-align: center;"></h2>
-                <hr>
-                <table class="table table-striped" style="font-size: medium;">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>MaNV</th>
-                            <th>Họ Tên</th>
-                            <th>Vị trí công việc</th>
-                            <th>Chức vụ</th>
-                            <th>Phòng ban</th>
-                            <th>Thông tin</th>
-                            <th>Xóa</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var nv in Model){
-                        <tr>
-                            <td></td>
-                            <td>@nv.Id</td>
-                            <td>@nv.HoDem @nv.Ten</td>
-                            <td>@nv.TenVitri</td>
-                            <td>@nv.TenChucVu</td>
-                            <td>@nv.TenPhongBan</td>
-                           <td><a href="@Url.Action("Display", "Info", new { id = nv.Id })">Xem chi tiết</a></td>
-                            <td><a href="#"><span class="trash-icon"></span></a></td>
-                            <td></td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+<div>
+    <div>
+        <h2 style="text-align: center;"></h2>
+        <hr>
+        <table class="table table-striped" style="font-size: medium;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>MaNV</th>
+                    <th>Họ Tên</th>
+                    <th>Vị trí công việc</th>
+                    <th>Chức vụ</th>
+                    <th>Phòng ban</th>
+                    <th>Thông tin</th>
+                    <th>Xóa</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var nv in Model){
+                <tr>
+                    <td></td>
+                    <td>@nv.Id</td>
+                    <td>@nv.HoDem @nv.Ten</td>
+                    <td>@nv.TenVitri</td>
+                    <td>@nv.TenChucVu</td>
+                    <td>@nv.TenPhongBan</td>
+                    <td><a href="@Url.Action("Display", "Info", new { id = nv.Id })">Xem chi tiết</a></td>
+                    <td><a href="@Url.Action("Delete", "Info", new { id = nv.Id })"><span class="trash-icon"></span></a></td>
+                    <td></td>
+                </tr>
+                }
+            </tbody>
+        </table>
     </div>
-</body>
-</html>
+</div>
+
+<style>
+.trash-icon::before {
+    font-family: 'Material Symbols Outlined';
+}
+
+.trash-icon::before {
+    content: "\e872";
+    font-size: large;
+}
+</style>
 
 
