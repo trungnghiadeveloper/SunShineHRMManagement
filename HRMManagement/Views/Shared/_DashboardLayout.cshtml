@@ -23,25 +23,40 @@
 <body>
     <!-- Navbar -->
     <nav class="my-navbar">
-        <form asp-controller="Info" asp-action="Index" method="get" class="my-navbar-left d-flex">
-            <input name="searchString" type="search" placeholder="Search" aria-label="Search" class="search-input">
-            <button class="btn search-input" type="submit">
-                <span id="search-icon" class="material-symbols-outlined">
-                    search
-                </span>
-            </button>
-        </form>
+        <div class="search">
+            <input type="text" class="search__input" placeholder="Search...">
+            <div class="search__icon">
+                <ion-icon name="search"></ion-icon>
+            </div>
+        </div>
         <div class="my-navbar-right">
-            <a asp-area="" asp-controller="" asp-action="" class="Notification">
+            <div class="icon__settings">
                 <span class="material-symbols-outlined">
                     notifications_unread
                 </span>
-            </a>
-            <a asp-area="" asp-controller="" asp-action="" class="Setting">
-                <span class="material-symbols-outlined">
-                    settings
-                </span>
-            </a>
+            </div>
+            <div>
+                <a id="nav-btn"
+                   class="nav-link dropdown-toggle text-hover text-white"
+                   href="#"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    <div class="icon__settings">
+                        <span class="material-symbols-outlined">
+                            settings
+                        </span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="dropdown-item text-paragraph" href="#"><span>Thông tin cá nhân</span></a>
+                    </li>
+                    <li>
+                        <a id="logout" class="dropdown-item text-paragraph" href="#"><span>Đăng xuất</span></a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -301,15 +316,15 @@
     </aside>
 
     <main>
-        <div id="main-content" style="margin-bottom: 40px; padding: 0 20px">
+        <div id="main-content" style="margin-top: 30px; padding: 0 20px">
             @RenderBody()
         </div>
     </main>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/myjavascript.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

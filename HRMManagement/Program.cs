@@ -60,26 +60,38 @@ if (!app.Environment.IsDevelopment())
 	app.UseHsts();
 }
 
-app.Use(async (ctx, next) =>
-{
-	await next();
-	if (ctx.Response.StatusCode == 404 && !ctx.Response.HasStarted)
-	{
-		//Re-execute the request so the user gets the error page
-		ctx.Request.Path = "/404";
-		await next();
-	}
-});
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Home}/{action=Index}");
+
+app.Use(async (ctx, next) =>
+{
+	bool isExistCookies = ctx.Request.Cookies.ContainsKey("UserId") && ctx.Request.Cookies.ContainsKey("UserName");
+	bool isPublicRoute = ctx.Request.Path == "/" || ctx.Request.Path == "/OAuth/Login" || ctx.Request.Path == "/OAuth/Register";
+
+	if (!isExistCookies && !isPublicRoute && ctx.Request.Path != "/404")
+	{
+		ctx.Response.Redirect("/OAuth/Login");
+		return;
+	}
+
+	if (isExistCookies && ctx.Request.Path == "/OAuth/Login" && ctx.Request.Path == "/OAuth/Register")
+	{
+		ctx.Response.Redirect("/dashboard");
+		return;
+	}
+
+	if (ctx.Response.StatusCode == 404)
+	{
+		ctx.Request.Path = "/404";
+	}
+
+	await next();
+});
 
 app.Run();

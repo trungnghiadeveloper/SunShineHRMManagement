@@ -25,7 +25,7 @@ namespace HRMManagement.Controllers
 
         [HttpGet("[action]")]
         [Route("/login")]
-        public IActionResult Login()
+        public IActionResult OAuth()
         {
             return View();
         }
