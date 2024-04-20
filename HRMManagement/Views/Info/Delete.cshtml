@@ -102,12 +102,11 @@
                                 <hr>
                             </div>
                             <br>
-                            <form asp-action="DeleteConfirmed" method="post">
+                            <form asp-controller="Info" asp-action="DeleteConfirmed" method="post" style="text-align: center">
                                 <input type="hidden" asp-for="Id" />
                                 <p style="color: red; font-size:large; text-decoration:underline; text-align:center">Bạn có chắc muốn xóa nhân viên này?</p>
-                                <button type="submit" class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;">Xóa</button>
+                                <button type="submit" class="btn btn-danger" style="padding: 12px 20px; width: 20%; font-size: medium;">Xóa</button>
                             </form>
-
                         </div>
                     </div>
                 </div>

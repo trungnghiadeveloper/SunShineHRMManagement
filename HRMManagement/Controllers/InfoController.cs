@@ -148,7 +148,7 @@ namespace HRMManagement.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ModelState);
+                return BadRequest(ex);
             }
         }
 
