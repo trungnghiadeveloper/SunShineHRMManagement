@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
     <link rel="stylesheet" href="~/css/core.css" />
-    <link rel="stylesheet" href="~/css/core.css" />
     <link rel="stylesheet" type="text/css" href="~/css/dashboard.css">
     <link rel="stylesheet" href="~/css/dashboardLayout.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -21,27 +20,29 @@
     <script src="~/js/config.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="my-navbar">
-        <form asp-controller="Info" asp-action="Index" method="get" class="my-navbar-left d-flex">
-            <input name="searchString" type="search" placeholder="Search" aria-label="Search" class="search-input">
-            <button class="btn search-input" type="submit">
-                <span id="search-icon" class="material-symbols-outlined">
-                    search
-                </span>
-            </button>
-        </form>
-        <div class="my-navbar-right">
-            <a asp-area="" asp-controller="" asp-action="" class="Notification">
-                <span class="material-symbols-outlined">
-                    notifications_unread
-                </span>
-            </a>
-            <a asp-area="" asp-controller="" asp-action="" class="Setting">
-                <span class="material-symbols-outlined">
-                    settings
-                </span>
-            </a>
+    <header>
+        <!-- Navbar -->
+        <div class="my-navbar">
+            <form asp-controller="Info" asp-action="Index" method="get" class="my-navbar-left d-flex">
+                <input name="searchString" type="search" placeholder="Search" aria-label="Search" class="search-input">
+                <button class="btn" type="submit">
+                    <span id="search-icon" class="material-symbols-outlined">
+                        search
+                    </span>
+                </button>
+            </form>
+            <div class="my-navbar-right">
+                <a asp-area="" asp-controller="" asp-action="" class="Notification">
+                    <span class="material-symbols-outlined">
+                        notifications_unread
+                    </span>
+                </a>
+                <a asp-area="" asp-controller="" asp-action="" class="Setting">
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -51,10 +52,14 @@
             @* ACCOUNT INFO *@
             <partial name="_AccountPartial" />
             <div>
-                <a asp-area="" asp-controller="" asp-action="" class="dashboard">
-                    <img src="~/assets/images/dashboard_FILL.png">
-                    <span class="dash-text">Dashboard</span>
-                </a>
+                @* ACCOUNT INFO *@
+                <partial name="_AccountPartial" />
+                <div>
+                    <a asp-area="" asp-controller="" asp-action="Dashboard/Index" class="dashboard">
+                        <img src="~/assets/images/dashboard_FILL.png">
+                        <span class="dash-text">Dashboard</span>
+                    </a>
+                </div>
             </div>
         </div>
         <!-- SCROLLBAR -->
@@ -138,31 +143,29 @@
                             <span class="links-name text">Lịch nghỉ phép</span>
                         </a>
                     </li>
-
-                    <!-- Tuyen dung -->
-                    <div class="side-title text">Tuyển dụng</div>
-                    <li class="task-name">
-                        <a asp-area="" asp-controller="" asp-action="">
-                            <div class="vertical-bar"></div>
-                            <span class="icons material-symbols-outlined">
-                                photo_auto_merge
-                            </span>
-                            <span class="links-name text">Hồ sơ tuyển dụng</span>
-                        </a>
-                    </li>
-                    <li class="task-name">
-                        <a asp-area="" asp-controller="" asp-action="">
-                            <div class="vertical-bar"></div>
-                            <span class="icons material-symbols-outlined">
-                                work
-                            </span>
-                            <span class="links-name text">Vị trí tuyển</span>
-                        </a>
-                    </li>
-                    <li class="task-name">
-                        <a asp-area="" asp-controller="" asp-action="">
-                            <div class="vertical-bar"></div>
-
+                        <!-- Tuyen dung -->
+                        <div class="side-title text">Tuyển dụng</div>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    photo_auto_merge
+                                </span>
+                                <span class="links-name text">Hồ sơ tuyển dụng</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="" asp-action="">
+                                <div class="vertical-bar"></div>
+                                <span class="icons material-symbols-outlined">
+                                    work
+                                </span>
+                                <span class="links-name text">Vị trí tuyển</span>
+                            </a>
+                        </li>
+                        <li class="task-name">
+                            <a asp-area="" asp-controller="UngVien" asp-action="Index">
+                                <div class="vertical-bar"></div>
                             <span class="icons material-symbols-outlined">
                                 clinical_notes
                             </span>

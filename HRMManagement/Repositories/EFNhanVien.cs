@@ -23,7 +23,7 @@ namespace HRMManagement.Repositories
 
         public async Task<Nhanvien> GetByIdAsync(string id)
         {
-            return   await _context.Nhanviens.FindAsync(id);
+            return await _context.Nhanviens.FindAsync(id);
             
         }
         public async Task UpdateAsync(Nhanvien nv)

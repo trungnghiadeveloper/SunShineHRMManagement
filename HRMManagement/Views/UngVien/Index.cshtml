@@ -1,0 +1,149 @@
+﻿@model IEnumerable<HRMManagement.Models.UngVienViewModel>
+@{
+    ViewData["Title"] = "Applicant";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+<div class="card my-scrollbox-inner" style="margin: 10px;">
+    <div id="table-header">
+        <div class=" card-header d-lg-flex" style="justify-content:space-between">
+            <h5>Ứng viên</h5>
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-outline-info" asp-area="" asp-controller="Applicant" asp-action="Add">
+                    <span class="material-symbols-outlined">
+                        person_add
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                           href=""
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Mã
+                        </a>
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                           href=""
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Ứng viên
+                        </a>
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Di động
+                        </a> 
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                           href=""
+                           role="button"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                           Email
+                        </a>
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Ngày đề nghị
+                        </a>
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                         Ngày phỏng vấn
+                        </a> 
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Người phỏng vấn
+                        </a> 
+                    </th>
+                    <th>
+                        <a class="nav-link dropdown-toggle"
+                        href=""
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Ghi chú
+                        </a> 
+                    </th>
+                    <th>
+                        <a asp-controller="Applicant" asp-action="Index">
+                            <span class="material-symbols-outlined" style="color:black">
+                                layers_clear
+                            </span>
+                        </a>s
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var uv in Model)
+                {
+                    <tr style="font-size: 14px;">                        
+                        <td data-id="@uv.Id">
+                            <i class="fab fa-angular fa-lg text-danger me-3"></i> 
+                            <strongs>@uv.HoDem @uv.Ten</strongs>
+                        </td>
+
+                        <td>@uv.TenVitri</td>
+                        <td>@uv.Sdt</td>
+                        <td>@uv.Email</td>
+                        <td>@uv.NgayDeNghi</td>
+                        <td>@uv.NgayPhongVan</td>
+                        <td>@uv.TenNguoiPhongVan</td>
+                        <td>@uv.GhiChu</td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown" style="color:black">
+                                    <span class="material-symbols-outlined">
+                                        more_horiz
+                                    </span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" data-id="@uv.Id" asp-controller="Applicant" asp-action="Detail">
+                                        <span class="material-symbols-outlined">
+                                            edit
+                                        </span>
+                                        Thông tin
+                                    </a>
+                                    <a style="color:red; justify-content:center" class="dropdown-item" data-id="@uv.Id" asp-controller="Applicant" asp-action="Detete">
+                                        <span class="material-symbols-outlined">
+                                            delete
+                                        </span>
+                                        <strong>Xóa</strong>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

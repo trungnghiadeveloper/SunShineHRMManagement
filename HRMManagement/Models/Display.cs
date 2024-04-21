@@ -39,6 +39,4 @@ namespace HRMManagement.Models
         public string? AnhProfile { get; set; }
 
     }
-
-    
 }

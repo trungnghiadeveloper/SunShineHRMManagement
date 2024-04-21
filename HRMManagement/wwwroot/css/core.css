@@ -2358,7 +2358,7 @@ textarea.form-control-lg {
 
 .form-select {
   display: block;
-  width: 100%;
+  width: 90%;
   padding: 0.4375rem 1.875rem 0.4375rem 0.875rem;
   -moz-padding-start: calc(0.875rem - 3px);
   font-size: 0.9375rem;
@@ -4157,10 +4157,10 @@ textarea.form-control-lg {
   margin-left: 0.1875rem;
 }
 .page-item.active .page-link {
-  z-index: 3;
-  color: #fff;
-  background-color: rgba(105, 108, 255, 0.08);
-  border-color: rgba(105, 108, 255, 0.08);
+    z-index: 3;
+    color: #fff;
+    background-color: rgba(105, 155, 255, 0.08);
+    border-color: rgba(105, 155, 255 0.08);
 }
 .page-item.disabled .page-link {
   color: #a1acb8;
