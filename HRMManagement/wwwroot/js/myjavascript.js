@@ -11,8 +11,11 @@ var ESettingMenuDropdown = document.querySelector("#setting-menu-dropdown");
 
 
 $(document).ready(function () {
-    EProfileName.textContent = getUserCookie('EmployeeName').replace('%20', ' ');
-    EProfilePosition.textContent = getUserCookie('PositionName').replace('%20', ' ');
+    let employeeName = decodeURIComponent(getUserCookie('EmployeeName')).replace(/\+/g, ' ');
+    let positionName = decodeURIComponent(getUserCookie('PositionName')).replace(/\+/g, ' ');
+
+    EProfileName.textContent = employeeName;
+    EProfilePosition.textContent = positionName;
 });
 
 $(document).ready(function () {
