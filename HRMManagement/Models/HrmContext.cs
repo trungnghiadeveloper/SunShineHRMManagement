@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using HRMManagement.Models;
 
 namespace HRMManagement.Models;
 
@@ -494,7 +493,5 @@ public partial class HrmContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
-
-    public DbSet<HRMManagement.Models.UngVienViewModel>? UngVienViewModel { get; set; }
     
 }
