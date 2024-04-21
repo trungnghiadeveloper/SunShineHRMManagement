@@ -1,62 +1,55 @@
 ﻿@model IEnumerable<HRMManagement.Models.Display>
+@{
+    ViewData["Title"] = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div style="padding: 0 20px">
+    <div class="d-flex justify-content-end align-items-center w-100 mt-3">
+        <button id="info-add-employee" type="button" class="btn btn-primary">Thêm nhân viên</button>
+    </div>
+    <hr>
+    <table class="table table-striped" style="font-size: medium;">
+        <thead>
+            <tr>
+                <th></th>
+                <th>MaNV</th>
+                <th>Họ Tên</th>
+                <th>Vị trí công việc</th>
+                <th>Chức vụ</th>
+                <th>Phòng ban</th>
+                <th>Thông tin</th>
+                <th>Xóa</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var nv in Model){
+            <tr>
+                <td></td>
+                <td>@nv.Id</td>
+                <td>@nv.HoDem @nv.Ten</td>
+                <td>@nv.TenVitri</td>
+                <td>@nv.TenChucVu</td>
+                <td>@nv.TenPhongBan</td>
+                <td><a href="@Url.Action("Display", "Info", new { id = nv.Id })">Xem chi tiết</a></td>
+                <td><a href="@Url.Action("Delete", "Info", new { id = nv.Id })"><span class="trash-icon"></span></a></td>
+                <td></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 <style>
-    * {
-        margin: 0;
-    }
+.trash-icon::before {
+    font-family: 'Material Symbols Outlined';
+}
 
-    .body {
-        font-family: Arial, Helvetica, sans-serif;
-        display: inline;
-        display: grid;
-        grid-template-columns: 20% 80%;
-        margin: 0 auto;
-        max-width: 1600px;
-    }
-
-    .sidebar {
-        grid-column: 1;
-        background-color: blanchedalmond;
-        max-width: 100%;
-    }
-
+.trash-icon::before {
+    content: "\e872";
+    font-size: large;
+}
 </style>
-
-
-    <div class="sidebar">
-    </div>
-    <div class="container mt-3">
-            <div>
-                <h2 style="text-align: center;"></h2>
-                <hr>
-                <table class="table table-striped" style="font-size: medium;">
-                    <thead>
-                        <tr>
-                            <th>MaNV</th>
-                            <th>Họ Tên</th>
-                            <th>Vị trí công việc</th>
-                            <th>Chức vụ</th>
-                            <th>Phòng ban</th>
-                            <th>Thông tin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var nv in Model){
-                        <tr>
-                            <td>@nv.Id</td>
-                            <td>@nv.HoDem @nv.Ten</td>
-                            <td>@nv.TenVitri</td>
-                            <td>@nv.TenChucVu</td>
-                            <td>@nv.TenPhongBan</td>
-                           <td><a href="@Url.Action("Display", "Info", new { id = nv.Id })">Xem chi tiết</a></td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-    </div>
-    
-
-
 
 

@@ -13,6 +13,13 @@ for details on configuring this project to bundle and minify static web assets. 
     box-sizing: border-box;
 }
 
+.full-screen {
+    width: 100%;
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
 .app-width {
     max-width: 1440px;
 }

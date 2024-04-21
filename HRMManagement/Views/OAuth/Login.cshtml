@@ -1,0 +1,61 @@
+﻿@model Taikhoan
+@{
+	ViewBag.Title = "Login Page";
+	Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/LoginStyle.css" />
+<div class="app">
+	<div class="container">
+		<div class="login-form">
+			<h1>Login</h1>
+			<p>How to I get started lorem ipsum dolor at?</p>
+			<form method="POST" asp-action="Login" asp-controller="OAuth" style="display: flex; flex-direction: column;">
+				<input type="text" name="TenDangNhap" placeholder=" Enter Username" autocomplete="username" style="margin-bottom: 0" required>
+				<span asp-validation-for="TenDangNhap" style="color: red"></span>
+				<br>
+				<div style="position: relative; width: 100%;">
+					<input id="password" type="password" name="MatKhau" placeholder="Enter Password" style="width: 100%;" autocomplete="password" required />
+					<span asp-validation-for="MatKhau" style="color: red"></span>
+					<img id="toggle-password" src="~/images/eye-password-hide.svg" class="position-absolute top-50 start-100 translate-middle"
+						 style="cursor: pointer; position: absolute; top: 22px; right: 13px; transform: translateY(-50%); width: 17px;">
+				</div>
+				<div class="remember-me">
+					<div class="d-flex align-items-center justify-content-center gap-2">
+						<input type="checkbox" name="remember" />
+						<span>Remember me</span>
+					</div>
+					<a href="/OAuth/Register"><span>Register now.</span></a>
+				</div>
+				<br>
+				<div class="w-100">
+					<button type="submit" class="btn-login">Login</button>
+				</div>
+			</form>
+			<div class="login-with-others">
+				<p><strong>Login</strong> with Others:</p>
+				<a class="google-btn" href="#" target="_blank">
+					<img src="~/images/google-logo.png" alt="Google">
+					<span style="margin-top: 5px;">Login with <strong>Google</strong></span>
+				</a>
+				<br>
+				<a  class="facebook-btn" href="#">
+					<img src="~/images/facebook-logo.png" alt="Facebook">
+					<span style="margin-top: 5px;">Login with <strong>Facebook</strong></span>
+				</a>
+			</div>
+		</div>
+		<div class="images-display"
+			 style="background-image: url('~/images/Rectangle.png'); position: relative; border-right: 1px;">
+			<img src="~/images/Rectangle_mini.png" style="width: 260px; position: absolute; top: 70px; right: 80px">
+			<img src="~/images/Rectangle.png" style="position: absolute; top: 0; left: 0; z-index: -1;">
+			<img src="~/images/WomenWithTablet.png" style="width: 500px; position: absolute; top: 65px; right: 10px">
+			<img src="~/images/Thunder.png" style="width: 55px; position: absolute; top: 300px; right: 310px">
+			<p style="position: absolute; text-align: left; color: white; font-weight: bold; font-size: 25px; top: 85px; left: 90px">
+				Very good<br>works are<br>waiting for<br>you Login<br>Now!!!
+			</p>
+			<img src="~/images/IconHTMs.png" style="width: 150px; position: absolute; top: 430px; right: 130px">
+		</div>
+	</div>
+</div>
+<script src="~/js/myjavascript.js" asp-append-version="true"></script>

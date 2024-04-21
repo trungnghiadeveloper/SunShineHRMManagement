@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "Dashboard Page";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    var stats = (Dictionary<string, int>)ViewData["stats"];
+}
+
+<div class="dashboard__content-main">
+    <div class="dashboard__card-grid">
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zendesk.svg" /></span>
+                    <h3>Hợp đồng</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["hopdong"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zendesk.svg" /></span>
+                    <h3>Hợp đồng hết hạn</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["hopdong_hethan"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zeplin.svg" /></span>
+                    <h3>Nhân viên</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/github.svg" /></span>
+                    <h3>Nhân viên mới</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvienmoi"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/figma.svg" /></span>
+                    <h3>Ứng viên mới</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["ungvienmoi"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zapier.svg" /></span>
+                    <h3>Nhân viên thiếu giờ làm</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien_thieugiolam"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/notion.svg" /></span>
+                    <h3>Nhân viên nghỉ phép</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien_nghiphep"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/notion.svg" /></span>
+                    <h3>Nhân viên nhận bằng thạc sĩ</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien_nhanbang_thacsi"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/notion.svg" /></span>
+                    <h3>Nhân viên nhận bằng kỹ sư</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien_nhanbang_kysu"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/notion.svg" /></span>
+                    <h3>Nhân viên nhận bằng cử nhân</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["nhanvien_nhanbang_cunhan"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/slack.svg" /></span>
+                    <h3>Vị trí đang tuyển dụng</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["vitri_tuyen_dung"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zendesk.svg" /></span>
+                    <h3>Khóa đạo tạo</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                 <h1 style="font-size: 30px;">@stats["khoa_dt"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+        <article class="dashboard__card">
+            <div class="dashboard__card-header">
+                <div>
+                    <span><img src="https://assets.codepen.io/285131/zendesk.svg" /></span>
+                    <h3>Nhân viên hoàn thành khóa đạo tạo</h3>
+                </div>
+            </div>
+            <div class="dashboard__card-body">
+                <h1 style="font-size: 30px;">@stats["daotao"]</h1>
+            </div>
+            <div class="dashboard__card-footer">
+                <a href="#">View integration</a>
+            </div>
+        </article>
+    </div>
+</div>
