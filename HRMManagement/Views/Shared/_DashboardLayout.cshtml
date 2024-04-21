@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,13 +37,13 @@
                     notifications_unread
                 </span>
             </div>
-            <div class="btn-group">
-                <button type="button" class="icon__settings bg-white border-0" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <div class="btn-group position-relative">
+                <button id="setting-menu-btn" type="button" class="icon__settings bg-white border-0" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <span class="material-symbols-outlined">
                         settings
                     </span>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
+                <ul id="setting-menu-dropdown" class="position-absolute dropdown-menu dropdown-menu-end dropdown-menu-lg-end" style="bottom: -90px; right: 0;">
                     <li id="dashboard-profile"><button class="dropdown-item" type="button">Thông tin cá nhân</button></li>
                     <li id="dashboard-logout"><button class="dropdown-item" type="button">Đăng xuất</button></li>
                 </ul>
