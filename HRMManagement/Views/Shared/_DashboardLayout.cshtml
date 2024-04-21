@@ -6,20 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg" href="~/assets/images/logo.png" />
     <title>@ViewData["Title"] - Sunshine Enterprise</title>
-    <!-- GG Icons -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
     <link rel="stylesheet" href="~/css/core.css" />
-    <link rel="stylesheet" href="~/css/core.css" />
     <link rel="stylesheet" type="text/css" href="~/css/dashboard.css">
-    <link rel="stylesheet" href="~/css/dashboardLayout.css">
+    <link rel="stylesheet" href="~/css/font.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/dashboardLayout.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,500,0,0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="~/js/helpers.js"></script>
-    <script src="~/js/config.js"></script>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="my-navbar">
@@ -35,26 +38,15 @@
                     notifications_unread
                 </span>
             </div>
-            <div>
-                <a id="nav-btn"
-                   class="nav-link dropdown-toggle text-hover text-white"
-                   href="#"
-                   role="button"
-                   data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    <div class="icon__settings">
-                        <span class="material-symbols-outlined">
-                            settings
-                        </span>
-                    </div>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a class="dropdown-item text-paragraph" href="#"><span>Thông tin cá nhân</span></a>
-                    </li>
-                    <li>
-                        <a id="logout" class="dropdown-item text-paragraph" href="#"><span>Đăng xuất</span></a>
-                    </li>
+            <div class="btn-group">
+                <button type="button" class="icon__settings bg-white border-0" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
+                    <li id="dashboard-profile"><button class="dropdown-item" type="button">Thông tin cá nhân</button></li>
+                    <li id="dashboard-logout"><button class="dropdown-item" type="button">Đăng xuất</button></li>
                 </ul>
             </div>
         </div>
@@ -64,7 +56,15 @@
     <aside class="my-left-sidebar close">
         <div>
             @* ACCOUNT INFO *@
-            <partial name="_AccountPartial" />
+            <div class="nav-link text-dark profile-detail" style="cursor: pointer;">
+                <div id="profile-content" class="profile-content">
+                    <img src="~/assets/images/default-avatar.png" alt="Profile Image" class="profile-image">
+                    <div class="profile-text">
+                        <span id="profile-name" class="text name">Tên</span>
+                        <span id="profile-job" class="text job">Vị trí CV</span>
+                    </div>
+                </div>
+            </div>
             <div>
                 <a asp-area="" asp-controller="" asp-action="" class="dashboard">
                     <img src="~/assets/images/dashboard_FILL.png">
@@ -325,6 +325,8 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/myjavascript.js" asp-append-version="true"></script>
+    <script src="~/js/helpers.js"></script>
+    <script src="~/js/config.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

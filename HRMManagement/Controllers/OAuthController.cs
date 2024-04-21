@@ -1,8 +1,6 @@
 ﻿using HRMManagement.Models;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace HRMManagement.Controllers
 {
@@ -10,6 +8,9 @@ namespace HRMManagement.Controllers
 	{
 		private const string CookieUserId = "UserId";
 		private const string CookieUserName = "UserName";
+		private const string CookieIDNV = "IDNV";
+		private const string CookieEmployeeName = "EmployeeName";
+		private const string CookiePosition = "PositionName";
 		private readonly HrmContext _context;
 		private readonly ILogger<OAuthController> _logger;
 
@@ -94,6 +95,10 @@ namespace HRMManagement.Controllers
 
 		private async Task SaveUserToCookieAsync(Taikhoan account, bool remember)
 		{
+			var employee = await _context.Nhanviens.FirstOrDefaultAsync(u => u.Id == account.Idnv);
+			var position = await _context.Vitricvs.FirstOrDefaultAsync(u => u.Id == employee.IdviTri);
+			var empoyeeName = employee.HoDem + " " + employee.Ten;
+
 			var options = new CookieOptions
 			{
 				IsEssential = true
@@ -106,6 +111,9 @@ namespace HRMManagement.Controllers
 
 			Response.Cookies.Append(CookieUserId, account.Id.ToString(), options);
 			Response.Cookies.Append(CookieUserName, account.TenDangNhap.ToString(), options);
+			Response.Cookies.Append(CookieIDNV, account.Idnv.ToString(), options);
+			Response.Cookies.Append(CookieEmployeeName, empoyeeName.ToString(), options);
+			Response.Cookies.Append(CookiePosition, position.TenVitri.ToString(), options);
 		}
 	}
 }

@@ -80,10 +80,12 @@ app.Use(async (ctx, next) =>
 		return;
 	}
 
-	if (isExistCookies && ctx.Request.Path == "/OAuth/Login" && ctx.Request.Path == "/OAuth/Register")
+	if (isExistCookies)
 	{
-		ctx.Response.Redirect("/dashboard");
-		return;
+		if (isPublicRoute) {
+			ctx.Response.Redirect("/dashboard");
+			return;
+		}
 	}
 
 	if (ctx.Response.StatusCode == 404)
