@@ -1,4 +1,5 @@
-﻿document.addEventListener('DOMContentLoaded', function () {
+﻿var $ = jQuery.noConflict();
+document.addEventListener('DOMContentLoaded', function () {
     const taskItems = document.querySelectorAll('.task-name');
 
     taskItems.forEach(function (item) {
@@ -25,21 +26,18 @@
     });
 
     $(document).ready(function () {
-        $('#emps').click(function (event) {
-            event.preventDefault();
+        $('#departmentFilter, #positionFilter, #titleFilter').change(function () {
+            // Update the corresponding filter parameter in the view model
+            const departmentFilterValue = $('#departmentFilter').val();
+            const positionFilterValue = $('#positionFilter').val();
+            const titleFilterValue = $('#titleFilter').val();
 
-            $.ajax({
-                url: '/Nhanvien/Emp-List',
-                success: function (data) {
-                    $('#main-content').html(data);
-                },
-                error: function (error) {
-                    console.error("Error loading content:", error);
-                }
-            });
+            applyFilters(departmentFilterValue, positionFilterValue, titleFilterValue);
         });
-        $('#departmentFilter, #titleFilter, #positionFilter').change(function () {
-            applyFilters();
+
+        $('.accept-cookie-btn').click(function () {
+            // Loại bỏ class 'show' của partial
+            $('#offcanvasBackdrop').removeClass('show');
         });
     });
 });
@@ -59,25 +57,23 @@
 //    }
 //});
 function redirectToDetail(id) {
-    window.location.href = 'Display/' + id;
+    window.location.href = '/Info/Display/' + id;
 }
-function applyFilters() {
-    var departmentFilter = $('#departmentFilter').val();
-    var titleFilter = $('#titleFilter').val();
-    var positionFilter = $('#positionFilter').val();
-
-    // Gửi yêu cầu Ajax tới controller
+function applyFilters(departmentFilterValue, positionFilterValue, titleFilterValue) {
     $.ajax({
-        url: '/Info/Index',
-        type: 'GET',
+        url: '/Info/Index', // Assuming this is your controller action URL
+        type: 'GET', // Use GET for filter requests
         data: {
-            departmentFilter: departmentFilter,
-            titleFilter: titleFilter,
-            positionFilter: positionFilter
+            departmentFilter: departmentFilterValue,
+            positionFilter: positionFilterValue,
+            titleFilter: titleFilterValue
         },
         success: function (data) {
-            // Cập nhật nội dung view với dữ liệu mới từ controller
+            // Update the view content with the filtered data
             $('#resultContainer').html(data);
+        },
+        error: function (error) {
+            console.error("Error filtering:", error);
         }
     });
 }
