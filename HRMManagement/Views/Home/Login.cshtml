@@ -5,33 +5,31 @@
 	ViewBag.Title = "Login Page";
 	Layout = null;
 }
-<link rel="stylesheet" href="~/css/LoginStyle.css"/>
+<link rel="stylesheet" href="~/css/LoginStyle.css" />
 <div class="app">
 	<div class="container">
 		<div class="login-form">
 			<h1>Login</h1>
 			<p>How to I get started lorem ipsum dolor at?</p>
-			<form action="/login" method="post">
-				<input type="text" name="username" placeholder="Username">
-				<!-- <input type="password" name="password" placeholder="Password" id="password" style="position: relative;">
-				<img id="toggle-password" src="images/eye-password-hide.svg" style="cursor: pointer; position: absolute;"> -->
+			<form method="POST" asp-action="Login" asp-controller="LoginController">
+				<input type="text" name="TenDangNhap" placeholder="Username" required>
 				<div style="position: relative;">
-					<input type="password" name="password" placeholder="Password" id="password"
-						   style="width: 100%;">
+					<input type="password" name="MatKhau" placeholder="Password" id="password"
+						   style="width: 100%;" required>
 					<img id="toggle-password" src="images/eye-password-hide.svg"
-						 style="cursor: pointer; position: absolute; top: 18px; right: 13px; transform: translateY(-50%); width: 17px;">
+						 style="cursor: pointer; position: absolute; top: 22px; right: 13px; transform: translateY(-50%); width: 17px;">
 				</div>
 				<br>
-				<button type="submit">Login Now</button>
+				<button type="submit" class="btn-login">Login Now</button>
 			</form>
 			<div class="login-with-others">
 				<p><strong>Login</strong> with Others:</p>
-				<a href="#" target="_blank">
+				<a class="google-btn" href="#" target="_blank">
 					<img src="images/google-logo.png" alt="Google">
 					<span style="margin-top: 5px;">Login with <strong>Google</strong></span>
 				</a>
 				<br>
-				<a href="#">
+				<a  class="facebook-btn" href="#">
 					<img src="images/facebook-logo.png" alt="Facebook">
 					<span style="margin-top: 5px;">Login with <strong>Facebook</strong></span>
 				</a>
@@ -49,3 +47,4 @@
 		</div>
 	</div>
 </div>
+<script src="~/js/ShowPassword.js"></script>

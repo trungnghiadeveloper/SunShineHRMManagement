@@ -1,7 +1,7 @@
 ﻿@model HRMManagement.Models.Display
 
 @{
-    ViewData["Title"] = "Thông Tin Chi Tiết";
+    ViewData["Title"] = "Xóa Nhân Viên";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
@@ -29,20 +29,18 @@
 
 @if (Model != null)
 {
-        <div class="main-content">
+    <body>
+        <div class="body">
             <div class="Content">
                 <div class="row">
                     <div class="col-sm-4 p-3">
                         <div class="container mt-3">
-                            <div class="card" style="max-width:400px">
+                            <div class="card" style="max-width: 400px;">
                                 <img class="card-img-top" src="/profileimages/@(Model.Id).jpg" alt="Profile image" style="width:100%" ; height="400px" onerror="this.onerror=null; this.src='/profileimages/default.jpg';">
                                 <div class="card-body">
                                     <h4 class="card-title" style="font-weight:bold">@Model.HoDem @Model.Ten</h4>
                                     <p class="card-text" style="font-size:large">@Model.TenChucVu @Model.TenPhongBan</p>
                                     <p class="card-text" style="font-size:medium;">@Model.TenVitri</p>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateImage">
-                                        Tải ảnh lên
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -104,32 +102,15 @@
                                 <hr>
                             </div>
                             <br>
-                            <a class="btn btn-primary" style="padding: 20px; width: 100%; font-size: x-large;" asp-controller="Info" asp-action="Update" asp-route-id="@Model.Id">Chỉnh Sửa Thông Tin Cá Nhân</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-            <div class="modal fade show" id="updateImage" tabindex="-1" role="dialog" aria-labelledby="ImageLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="ImageLabel">Cập nhật ảnh đại diện</h5>
-                            <button type="button" class="btn-close btn-sm" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" enctype="multipart/form-data" asp-controller="Info" asp-action="UploadImages" asp-route-id="@Model.Id">      
-                                <div class="form-group">
-                                    <label for="InputImage"></label>
-                                    <input type="file" name="imageFile" id="imageFile" placeholder="Chọn ảnh" />
-                                    <hr>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Tải lên</button>
+                            <form asp-controller="Info" asp-action="DeleteConfirmed" method="post" style="text-align: center">
+                                <input type="hidden" asp-for="Id" />
+                                <p style="color: red; font-size:large; text-decoration:underline; text-align:center">Bạn có chắc muốn xóa nhân viên này?</p>
+                                <button type="submit" class="btn btn-danger" style="padding: 12px 20px; width: 20%; font-size: medium;">Xóa</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </body>
 }
