@@ -36,7 +36,6 @@ EAddEmployeeBtn?.addEventListener("click", function () {
 });
 
 ELogout.addEventListener("click", function () {
-    console.log("click");
     document.cookie = "UserId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "UserName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "IDNV=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
