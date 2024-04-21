@@ -247,7 +247,6 @@ img {
 
 .content {
     border-top: 1px solid var(--c-border-primary);
-    margin-top: 2rem;
     display: flex;
     align-items: flex-start;
 }
@@ -478,4 +477,9 @@ img {
 
 .toggle input:focus + span {
     box-shadow: 0 0 0 4px var(--c-background-tertiary);
+}
+
+.profile-text {
+    display: flex;
+    flex-direction: column;
 }
