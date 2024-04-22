@@ -1,4 +1,5 @@
-﻿function sendMessage() {
+﻿// Function to send message to the server and display response
+function sendMessage() {
     var message = document.getElementById("messageInput").value.trim();
     if (message !== '') {
         displayMessage(message, true);

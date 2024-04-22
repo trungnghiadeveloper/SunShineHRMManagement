@@ -6,21 +6,16 @@ using System.Threading.Tasks;
 namespace HRMManagement.Controllers
 {
     [Route("api/[controller]")]
-    public class ChatboxController : Controller
+    public class ChatController : ControllerBase
     {
         private readonly ChatGptClient _chatGptClient;
 
-        public ChatboxController(ChatGptClient chatGptClient)
+        public ChatController(ChatGptClient chatGptClient)
         {
             _chatGptClient = chatGptClient;
         }
 
-        public IActionResult Chatbox()
-        {
-            return View();
-        }
-
-        [HttpPost]
+        [HttpPost("sendmessage")]
         public async Task<IActionResult> SendMessage([FromBody] ChatMessage message)
         {
             if (message == null || string.IsNullOrWhiteSpace(message.Message))

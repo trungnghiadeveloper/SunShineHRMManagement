@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace HRMManagement.Repositories;
+namespace HRMManagement.Controllers;
 public class ChatGptClient 
 {
     private readonly HttpClient _client;
